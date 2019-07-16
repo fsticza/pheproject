@@ -1,0 +1,89 @@
+.main-navbar {
+  color: #8a9db6;
+  box-shadow: 0 0 5px rgba(138,157,182, 0.25);
+}
+
+.main-navbar .navbar-brand {
+  color: #8a9db6;
+  padding: 0;
+  margin-top: -8px;
+  margin-bottom: -8px;
+}
+
+.main-navbar .navbar-brand .custom-font {
+  display: inline-block;
+  line-height: 1;
+  font-size: 17px;
+  margin-top: 11px;
+}
+
+.main-navbar .navbar-brand img {
+  margin-right: 10px;
+  float: left;
+}
+
+a {
+  color: #6893E8;
+}
+
+.custom-font {
+  font-family: 'Jaldi', sans-serif;
+}
+
+body {
+  font-family: 'Jaldi', sans-serif;
+  color: #292E36;
+  font-size: 18px;
+}
+
+.svg {
+  fill: currentColor;
+}
+
+.jumbo-section {
+  height: 176px;
+  position: relative;
+  overflow: hidden;
+}
+@media only screen and (min-width: 768px) {
+  .jumbo-section {
+    height: 400px;
+  }
+}
+
+.jumbo-image {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: auto;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.jumbo-section::after {
+  content: ' ';
+  z-index: 3;
+  background: rgba(138,157,182, 0.25);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.service-heading {
+  font-size: 28px;
+  line-height: 34px;
+  margin: 15px 0;
+  display: inline-block;
+  background: #8a9db6;
+  color: #fff;
+  padding: 5px 15px;
+}
+
+.section-title {
+  color: #8a9db6;
+  margin-bottom: 24px;
+}
+
+.contanct-link {
+  line-height: 1.25;
+}
