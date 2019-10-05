@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
     <img height="600" class="img-fluid" src="img/index-head.jpg" alt="" />
   </div>
 </template>

@@ -29,7 +29,9 @@
         </b-collapse>
       </b-navbar>
     </div>
-    <nuxt />
+    <div class="container">
+      <nuxt />
+    </div>
   </div>
 </template>
 
@@ -47,9 +49,10 @@
   .nav-link {
     text-transform: uppercase;
     text-decoration: none;
-  }
-  &.active {
-    font-weight: bold;
+
+    &.active {
+      font-weight: bold;
+    }
   }
 }
 </style>

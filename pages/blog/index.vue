@@ -1,7 +1,7 @@
 <template>
   <section>
+    blog index
     <article v-for="post in blogPosts" :key="post.id">
-      {{ post }}
       <h1>{{ post.title }}</h1>
       <div>yolo</div>
     </article>
