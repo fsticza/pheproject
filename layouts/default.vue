@@ -1,55 +1,55 @@
 <template>
   <div>
+    <div class="container">
+      <b-navbar class="main-navbar" toggleable="lg" type="light">
+        <b-navbar-brand href="#">
+          <img height="140" src="img/PHE-logo.svg" alt="" />
+        </b-navbar-brand>
+
+        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+        <b-collapse id="nav-collapse" is-nav>
+          <b-navbar-nav class=" ml-auto">
+            <NLink class="nav-item nav-link" to="/">Főoldal</NLink>
+            <NLink class="nav-item nav-link" to="/rolunk">Rólunk</NLink>
+            <NLink class="nav-item nav-link" to="/referenciak"
+              >Referenciáink</NLink
+            >
+            <NLink class="nav-item nav-link" to="/szolgaltatasok"
+              >Szolgáltatások</NLink
+            >
+            <NLink class="nav-item nav-link" to="/blog">Híreink</NLink>
+            <NLink class="nav-item nav-link" to="/kapcsolat"
+              >Elérhetőségek</NLink
+            >
+          </b-navbar-nav>
+          <!-- <b-navbar-nav class="">
+            HU | EN
+          </b-navbar-nav> -->
+        </b-collapse>
+      </b-navbar>
+    </div>
     <nuxt />
   </div>
 </template>
 
-<style>
-html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
-
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-  margin: 0;
-}
-
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
-}
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+<style lang="scss">
+@import '~/assets/scss/app';
+.main-navbar {
+  padding: 0;
+  .navbar-brand {
+    padding-bottom: 0;
+    padding-top: 0;
+    margin-bottom: -78px;
+    border-right: 5px solid $body-bg;
+    border-bottom: 5px solid $body-bg;
+  }
+  .nav-link {
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  &.active {
+    font-weight: bold;
+  }
 }
 </style>

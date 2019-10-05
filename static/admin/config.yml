@@ -8,13 +8,22 @@ public_folder: /img
 collections:
   - name: 'blog'
     label: 'Blog'
+    format: json
     folder: 'assets/content/blog'
     create: true
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
     editor:
-      preview: false
+      preview: true
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      - { label: 'Cover Image', name: 'cover', widget: 'image',
+          media_library: {
+            config: {
+              multiple: true,
+              previewStep: false
+            }
+          }
+        }
       - { label: 'Description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
