@@ -1,6 +1,9 @@
 <template>
   <div>
-    <img height="600" class="img-fluid" src="img/index-head.jpg" alt="" />
+    <div
+      class="head-img"
+      style="background-image: url('img/construction-head-3.jpg')"
+    ></div>
   </div>
 </template>
 

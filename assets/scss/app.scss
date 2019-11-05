@@ -1,2 +1,9 @@
 @import "./abstracts/variables";
 @import "./vendors/bootstrap";
+
+.head-img {
+  height: 300px;
+  background-color: #e8e9e4;
+  background-position: 50% 50%;
+  background-size: cover;
+}

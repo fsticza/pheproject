@@ -49,7 +49,8 @@ module.exports = {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/markdownit',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    '@nuxtjs/svg'
   ],
   bootstrapVue: {
     bootstrapCSS: false, // Or `css: false`

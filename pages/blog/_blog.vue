@@ -1,5 +1,9 @@
 <template>
   <article>
+    <div
+      class="head-img"
+      :style="`background-image: url(${blogPost.cover})`"
+    ></div>
     <h1>{{ blogPost.title }}</h1>
     <div v-html="$md.render(blogPost.body)" />
   </article>
