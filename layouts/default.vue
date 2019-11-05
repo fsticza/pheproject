@@ -3,7 +3,7 @@
     <header class="container">
       <b-navbar class="main-navbar" toggleable="lg" type="light">
         <b-navbar-brand href="#">
-          <img height="140" src="img/PHE-logo.svg" alt="" />
+          <img height="140" src="/img/PHE-logo.svg" alt="" />
         </b-navbar-brand>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
