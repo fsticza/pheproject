@@ -36,18 +36,27 @@
     </div>
     <footer class="main-footer">
       <div class="container">
-        <a href="">
-          <img src="~assets/img/map-icon.svg" />
-          1096 Budapest, Tűzoltó utca 50. Manta Office
-        </a>
-        <a href="mailto:info@pheproject.hu">
-          <img src="~assets/img/email-icon.svg" />
-          info@pheproject.hu
-        </a>
-        <a href="tel:+36705263135">
-          <img src="~assets/img/phone-icon.svg" />
-          +3670 526 3135
-        </a>
+        <div class="d-flex">
+          <a class="footer-link" href="">
+            <img class="footer-link-icon" src="~assets/img/map-icon.svg" />
+            1096 Budapest, Tűzoltó utca 50. Manta Office
+          </a>
+          <a class="footer-link" href="mailto:info@pheproject.hu">
+            <img class="footer-link-icon" src="~assets/img/email-icon.svg" />
+            info@pheproject.hu
+          </a>
+          <a class="footer-link" href="tel:+36705263135">
+            <img class="footer-link-icon" src="~assets/img/phone-icon.svg" />
+            +3670 526 3135
+          </a>
+          <a
+            class="ml-auto"
+            href="https://www.facebook.com/pheproject.hu/"
+            target="_blank"
+          >
+            <img class="footer-link-icon" src="~assets/img/facebook-icon.svg" />
+          </a>
+        </div>
       </div>
     </footer>
   </div>
@@ -88,5 +97,19 @@
   background-color: #123541;
   color: #fff;
   padding: 30px 0;
+}
+.footer-link {
+  color: #fff;
+  text-decoration: none;
+  display: inline-block;
+  margin-right: 20px;
+  font-size: 0.875rem;
+
+  &:hover {
+    color: #fff;
+  }
+}
+.footer-link-icon {
+  padding-right: 5px;
 }
 </style>
