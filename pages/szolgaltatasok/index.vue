@@ -1,9 +1,8 @@
 <template>
   <div>
-    <div
-      class="head-img"
-      style="background-image: url('/img/references-head.jpg')"
-    ></div>
+    <div class="head-img">
+      <img class="img" src="/img/references-head.jpg" alt="" />
+    </div>
   </div>
 </template>
 

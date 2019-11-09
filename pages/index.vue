@@ -1,9 +1,8 @@
 <template>
   <div>
-    <div
-      class="head-img"
-      style="background-image: url('/img/construction-head-3.jpg')"
-    ></div>
+    <div class="head-img">
+      <img class="img" src="/img/construction-head-3.jpg" alt="" />
+    </div>
 
     <div class="row">
       <div class="col-sm-10 offset-sm-1">
