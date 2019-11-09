@@ -12,9 +12,25 @@ module.exports = {
         hid: 'description',
         name: 'description',
         content: process.env.npm_package_description || ''
+      },
+      {
+        name: 'theme-color',
+        content: '#8b9db5'
       }
     ],
     link: [
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        href: '/favicon-32x32.png'
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        href: '/favicon-16x16.png'
+      },
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       {
         rel: 'stylesheet',
@@ -38,7 +54,7 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [{ src: '~/plugins/google-maps.js', ssr: false }],
   /*
    ** Nuxt.js dev-modules
    */
@@ -82,12 +98,20 @@ module.exports = {
   generate: {
     routes() {
       const fs = require('fs')
-      return fs.readdirSync('./assets/content/blog').map((file) => {
-        return {
-          route: `/blog/${file.slice(2, -5)}`, // Remove the .json from the end of the filename
-          payload: require(`./assets/content/blog/${file}`)
-        }
-      })
+      return [
+        ...fs.readdirSync('./assets/content/blog').map((file) => {
+          return {
+            route: `/blog/${file.slice(2, -5)}`, // Remove the .json from the end of the filename
+            payload: require(`./assets/content/blog/${file}`)
+          }
+        }),
+        ...fs.readdirSync('./assets/content/project').map((file) => {
+          return {
+            route: `/project/${file.slice(2, -5)}`, // Remove the .json from the end of the filename
+            payload: require(`./assets/content/project/${file}`)
+          }
+        })
+      ]
     }
   }
 }

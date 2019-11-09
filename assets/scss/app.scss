@@ -7,3 +7,18 @@
   background-position: 50% 50%;
   background-size: cover;
 }
+
+.img-canvas {
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+
+  .img {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    width: auto;
+    transform: translateX(-25%);
+    height: 100%;
+  }
+}

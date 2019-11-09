@@ -5,6 +5,8 @@ backend:
 media_folder: static/img
 public_folder: /img
 
+logo_url: /img/PHE-logo.svg
+
 collections:
   - name: 'blog'
     label: 'Blog'
@@ -12,18 +14,44 @@ collections:
     folder: 'assets/content/blog'
     create: true
     slug: '{{slug}}'
-    editor:
-      preview: true
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
-      - { label: 'Cover Image', name: 'cover', widget: 'image',
-          media_library: {
-            config: {
-              multiple: true,
-              previewStep: false
-            }
-          }
-        }
+      - { label: "Highlighted", required: false, name: "isHighlighted", widget: "boolean", default: true}
+      - label: 'Cover Image'
+        name: 'cover'
+        widget: 'image'
+        media_library:
+          config:
+            multiple: true
+      - { label: 'Description', name: 'description', widget: 'string' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+  - name: 'project'
+    label: 'Project'
+    format: 'json'
+    folder: 'assets/content/project'
+    create: true
+    slug: '{{slug}}'
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      - label: "Tags"
+        name: "tags"
+        widget: "select"
+        multiple: true
+        options:
+          - { label: "Lebonyolítás", value: "IMPL" }
+          - { label: "Projektmenedzsment", value: "PM" }
+          - { label: "Műszaki ellenőrzés", value: "TS" }
+          - { label: "Műszaki tanácsadás", value: "TC" }
+          - { label: "Ingatlanfejelsztés", value: "RED" }
+      - label: 'Image'
+        name: 'image'
+        required: false
+        widget: 'image'
+        allow_multiple: true
+        media_library:
+          config:
+            multiple: true
       - { label: 'Description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
