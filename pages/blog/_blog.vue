@@ -1,7 +1,7 @@
 <template>
   <article>
     <div class="head-img">
-      <img class="img" :src="blogPost.cover" alt="" />
+      <img class="img" loading="lazy" :src="blogPost.cover" alt="" />
     </div>
 
     <h1>{{ blogPost.title }}</h1>

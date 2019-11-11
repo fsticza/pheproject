@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="head-img">
-      <img class="img" src="/img/references-head.jpg" alt="" />
+      <img class="img" loading="lazy" src="/img/references-head.jpg" alt="" />
     </div>
   </div>
 </template>

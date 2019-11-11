@@ -1,7 +1,12 @@
 <template>
   <div>
     <div class="head-img">
-      <img class="img" src="/img/construction-head-1.jpg" alt="" />
+      <img
+        class="img"
+        loading="lazy"
+        src="/img/construction-head-1.jpg"
+        alt=""
+      />
     </div>
 
     <div class="row">
@@ -16,7 +21,12 @@
             <div class="row align-items-center">
               <div class="col-sm-4">
                 <div class="img-canvas" style="height: 200px">
-                  <img :src="project.image" class="img" alt="..." />
+                  <img
+                    loading="lazy"
+                    :src="project.image"
+                    class="img"
+                    alt="..."
+                  />
                 </div>
               </div>
               <div class="col-sm-8">

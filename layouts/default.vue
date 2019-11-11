@@ -3,7 +3,7 @@
     <header class="container">
       <b-navbar class="main-navbar" toggleable="lg" type="light">
         <b-navbar-brand href="#">
-          <img height="140" src="/img/PHE-logo.svg" alt="" />
+          <img height="140" class="brand-img" src="/img/PHE-logo.svg" alt="" />
         </b-navbar-brand>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -299,6 +299,10 @@ export default {
 body {
   overflow-y: scroll;
 }
+.brand-img {
+  position: relative;
+  z-index: 10;
+}
 .default-layout {
   display: flex;
   min-height: 100vh;
@@ -328,7 +332,7 @@ body {
   }
 }
 .main-footer {
-  background-color: #123541;
+  background-color: $secondary;
   color: #fff;
   padding: 30px 0;
 }

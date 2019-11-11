@@ -1,6 +1,14 @@
 export const state = () => ({
   blogPosts: [],
-  projects: []
+  projects: [],
+  projectTags: [
+    { label: 'Minden típus', value: 'ALL' },
+    { label: 'Lebonyolítás', value: 'IMPL' },
+    { label: 'Projektmenedzsment', value: 'PM' },
+    { label: 'Műszaki ellenőrzés', value: 'TS' },
+    { label: 'Műszaki tanácsadás', value: 'TC' },
+    { label: 'Ingatlanfejelsztés', value: 'RED' }
+  ]
 })
 
 export const mutations = {
@@ -9,6 +17,9 @@ export const mutations = {
   },
   setProjects(state, list) {
     state.projects = list
+  },
+  setServices(state, list) {
+    state.services = list
   }
 }
 
@@ -37,5 +48,17 @@ export const actions = {
       return res
     })
     await commit('setProjects', projects)
+
+    const serviceFiles = await require.context(
+      '~/assets/content/service/',
+      false,
+      /\.json$/
+    )
+    const services = serviceFiles.keys().map((key) => {
+      const res = serviceFiles(key)
+      res.slug = key.slice(2, -5)
+      return res
+    })
+    await commit('setServices', services)
   }
 }

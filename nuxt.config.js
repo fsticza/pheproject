@@ -110,6 +110,12 @@ module.exports = {
             route: `/project/${file.slice(2, -5)}`, // Remove the .json from the end of the filename
             payload: require(`./assets/content/project/${file}`)
           }
+        }),
+        ...fs.readdirSync('./assets/content/service').map((file) => {
+          return {
+            route: `/service/${file.slice(2, -5)}`, // Remove the .json from the end of the filename
+            payload: require(`./assets/content/service/${file}`)
+          }
         })
       ]
     }

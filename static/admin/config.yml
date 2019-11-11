@@ -55,3 +55,22 @@ collections:
             multiple: true
       - { label: 'Description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
+  - name: 'services'
+    label: 'Services'
+    format: 'json'
+    folder: 'assets/content/services'
+    slug: '{{slug}}'
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Icon', name: 'icon', widget: 'string' }
+      - { label: 'Tag', name: 'tag', widget: 'string' }
+      - label: 'Image'
+        name: 'image'
+        required: false
+        widget: 'image'
+        allow_multiple: true
+        media_library:
+          config:
+            multiple: true
+      - { label: 'Description', name: 'description', widget: 'string' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
