@@ -66,6 +66,8 @@ collections:
   - name: 'services'
     label: 'Services'
     format: 'json'
+    create: true
+    delete: false
     folder: 'assets/content/services'
     slug: '{{slug}}'
     fields:

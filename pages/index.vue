@@ -117,17 +117,19 @@
               <nav>
                 <ul class="nav flex-column">
                   <li
-                    v-for="tag in serviceTags"
-                    :key="tag.value"
+                    v-for="service in services"
+                    :key="service.tag"
                     class="nav-item"
                   >
                     <a
                       class="nav-link"
-                      :class="serviceFilter === tag.value ? 'active' : ''"
+                      :class="serviceFilter === service.tag ? 'active' : ''"
                       href="#"
-                      @click.prevent="setServiceFilter(tag.value)"
-                      >{{ tag.label }}</a
+                      @click.prevent="setServiceFilter(service.tag)"
                     >
+                      <img class="service-link-icon" :src="service.icon" />
+                      {{ service.title }}
+                    </a>
                   </li>
                 </ul>
               </nav>
