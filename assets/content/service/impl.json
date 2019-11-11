@@ -1,11 +1,7 @@
 {
-  "title": "project 1",
-  "year": 2019,
-  "location": "Budapest",
-  "tags": [
-    "IMPL",
-    "TS"
-  ],
+  "title": "Lebonyolítás",
+  "tag": "IMPL",
+  "icon": "/img/jelolesi_rendszer_egyseges.jpg",
   "image": "/img/jelolesi_rendszer_egyseges.jpg",
   "description": "description",
   "body": "asdfasd sda asf sad sd f"

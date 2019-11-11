@@ -60,7 +60,7 @@
         <div class="separator"></div>
 
         <section class="my-4">
-          <h1>Referenciák</h1>
+          <h1 class="sr-only">Referenciák</h1>
           <ul class="nav nav-pills nav-fill">
             <li v-for="tag in projectTags" :key="tag.value" class="nav-item">
               <a
@@ -94,25 +94,36 @@
                   alt="..."
                 />
               </div>
+              <h1 class="h3 mt-2">{{ project.title }}</h1>
+              <p>{{ project.description }}</p>
+              <NLink
+                :to="{
+                  name: 'referenciak-project',
+                  params: { project: project.slug }
+                }"
+              >
+                Bővebben
+              </NLink>
             </article>
           </div>
         </section>
 
         <div class="separator"></div>
 
-        <section>
+        <section class="my-4">
+          <h1 class="sr-only">Szolgáltatások</h1>
           <div class="row">
             <div class="col-sm-4">
               <nav>
-                <ul>
+                <ul class="nav flex-column">
                   <li
-                    v-for="tag in projectTags"
+                    v-for="tag in serviceTags"
                     :key="tag.value"
                     class="nav-item"
                   >
                     <a
                       class="nav-link"
-                      :class="projectFilter === tag.value ? 'active' : ''"
+                      :class="serviceFilter === tag.value ? 'active' : ''"
                       href="#"
                       @click.prevent="setServiceFilter(tag.value)"
                       >{{ tag.label }}</a
@@ -121,7 +132,33 @@
                 </ul>
               </nav>
             </div>
-            <div class="col-sm-8"></div>
+            <div class="col-sm-8">
+              <article
+                v-for="(service, idx) in services"
+                v-show="serviceFilter === service.tag"
+                :key="idx"
+                :class="idx === 0 ? 'active' : ''"
+              >
+                <div class="img-canvas" style="height: 200px">
+                  <img
+                    loading="lazy"
+                    :src="service.image"
+                    class="img"
+                    alt="..."
+                  />
+                </div>
+                <h1 class="h3 mt-2">{{ service.title }}</h1>
+                <p>{{ service.description }}</p>
+                <NLink
+                  :to="{
+                    name: 'szolgaltatasok-service',
+                    params: { service: service.slug }
+                  }"
+                >
+                  Bővebben
+                </NLink>
+              </article>
+            </div>
           </div>
         </section>
       </div>
@@ -155,6 +192,9 @@ export default {
     projects() {
       return this.$store.state.projects
     },
+    services() {
+      return this.$store.state.services
+    },
     filteredProjects() {
       if (this.projectFilter === 'ALL') {
         return this.projects
@@ -165,6 +205,9 @@ export default {
     },
     projectTags() {
       return this.$store.state.projectTags
+    },
+    serviceTags() {
+      return this.$store.state.projectTags.filter((tag) => tag.value !== 'ALL')
     }
   },
   methods: {

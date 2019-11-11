@@ -299,10 +299,6 @@ export default {
 body {
   overflow-y: scroll;
 }
-.brand-img {
-  position: relative;
-  z-index: 10;
-}
 .default-layout {
   display: flex;
   min-height: 100vh;
@@ -321,6 +317,8 @@ body {
     margin-bottom: -78px;
     border-right: 5px solid $body-bg;
     border-bottom: 5px solid $body-bg;
+    position: relative;
+    z-index: 10;
   }
   .nav-link {
     text-transform: uppercase;
