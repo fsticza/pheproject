@@ -68,7 +68,7 @@ collections:
     format: 'json'
     create: false
     delete: false
-    folder: 'assets/content/services'
+    folder: 'assets/content/service'
     slug: '{{slug}}'
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
