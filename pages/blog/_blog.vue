@@ -4,8 +4,12 @@
       <img class="img" loading="lazy" :src="blogPost.cover" alt="" />
     </div>
 
-    <h1>{{ blogPost.title }}</h1>
-    <div v-html="$md.render(blogPost.body)" />
+    <div class="row mt-4">
+      <div class="col-sm-10 offset-sm-1">
+        <h1>{{ blogPost.title }}</h1>
+        <div v-html="$md.render(blogPost.body)" />
+      </div>
+    </div>
   </article>
 </template>
 <script>

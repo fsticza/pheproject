@@ -5,6 +5,7 @@ $body-color: #353637;
 $primary: #8B9DB5;
 $secondary: #123541;
 $dark: $body-color;
+$enable-rounded: false;
 
 $link-decoration: underline;
 $link-color: $primary;
@@ -12,6 +13,6 @@ $link-color: $primary;
 $carousel-control-color: $primary;
 $carousel-indicator-active-bg: $body-color;
 
-@import "../node_modules/bootstrap/scss/functions";
-@import "../node_modules/bootstrap/scss/variables";
-@import "../node_modules/bootstrap/scss/mixins";
+@import "./node_modules/bootstrap/scss/functions";
+@import "./node_modules/bootstrap/scss/variables";
+@import "./node_modules/bootstrap/scss/mixins";

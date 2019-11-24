@@ -34,7 +34,7 @@
                   </div>
                 </div>
                 <div class="col-sm-6">
-                  <div class="d-flex h-100 flex-column">
+                  <div class="d-flex h-100 flex-column carousel-post">
                     <h1 class="mt-auto h2">{{ post.title }}</h1>
                     <p>
                       {{ post.description }}
@@ -60,108 +60,13 @@
         <div class="separator"></div>
 
         <section class="my-4">
-          <h1 class="sr-only">Referenciák</h1>
-          <ul class="nav nav-pills nav-fill">
-            <li v-for="tag in projectTags" :key="tag.value" class="nav-item">
-              <a
-                class="nav-link project-nav-link"
-                :class="projectFilter === tag.value ? 'active' : ''"
-                href="#"
-                @click.prevent="setProjectFilter(tag.value)"
-                >{{ tag.label }}</a
-              >
-            </li>
-          </ul>
-          <div class="row mb-4">
-            <div
-              v-if="!filteredProjects.length"
-              class="alert alert-info my-4 col-sm-6 offset-sm-3 text-center"
-            >
-              Még nincs projekt ebben a kategóriában
-            </div>
-            <article
-              v-for="(project, idx) in filteredProjects"
-              v-else
-              :key="idx"
-              class="my-4 col-sm-4"
-              :class="idx === 0 ? 'active' : ''"
-            >
-              <div class="img-canvas" style="height: 200px">
-                <img
-                  loading="lazy"
-                  :src="project.image"
-                  class="img"
-                  alt="..."
-                />
-              </div>
-              <h1 class="h3 mt-2">{{ project.title }}</h1>
-              <p>{{ project.description }}</p>
-              <NLink
-                :to="{
-                  name: 'referenciak-project',
-                  params: { project: project.slug }
-                }"
-              >
-                Bővebben
-              </NLink>
-            </article>
-          </div>
+          <reference-list></reference-list>
         </section>
 
         <div class="separator"></div>
 
         <section class="my-4">
-          <h1 class="sr-only">Szolgáltatások</h1>
-          <div class="row">
-            <div class="col-sm-4">
-              <nav>
-                <ul class="nav flex-column">
-                  <li
-                    v-for="service in services"
-                    :key="service.tag"
-                    class="nav-item"
-                  >
-                    <a
-                      class="nav-link"
-                      :class="serviceFilter === service.tag ? 'active' : ''"
-                      href="#"
-                      @click.prevent="setServiceFilter(service.tag)"
-                    >
-                      <img class="service-link-icon" :src="service.icon" />
-                      {{ service.title }}
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-            <div class="col-sm-8">
-              <article
-                v-for="(service, idx) in services"
-                v-show="serviceFilter === service.tag"
-                :key="idx"
-                :class="idx === 0 ? 'active' : ''"
-              >
-                <div class="img-canvas" style="height: 200px">
-                  <img
-                    loading="lazy"
-                    :src="service.image"
-                    class="img"
-                    alt="..."
-                  />
-                </div>
-                <h1 class="h3 mt-2">{{ service.title }}</h1>
-                <p>{{ service.description }}</p>
-                <NLink
-                  :to="{
-                    name: 'szolgaltatasok-service',
-                    params: { service: service.slug }
-                  }"
-                >
-                  Bővebben
-                </NLink>
-              </article>
-            </div>
-          </div>
+          <service-list />
         </section>
       </div>
     </div>
@@ -169,12 +74,16 @@
 </template>
 
 <script>
+import ServiceList from '../components/ServiceList'
+import ReferenceList from '../components/ReferenceList'
+
 export default {
-  components: {},
+  components: {
+    ServiceList,
+    ReferenceList
+  },
   data() {
     return {
-      projectFilter: 'ALL',
-      serviceFilter: 'IMPL',
       activeCarouselIndex: 0
     }
   },
@@ -190,37 +99,19 @@ export default {
       return this.$store.state.blogPosts.filter((post) => {
         return post.isHighlighted
       })
-    },
-    projects() {
-      return this.$store.state.projects
-    },
-    services() {
-      return this.$store.state.services
-    },
-    filteredProjects() {
-      if (this.projectFilter === 'ALL') {
-        return this.projects
-      }
-      return this.projects.filter((project) => {
-        return project.tags.includes(this.projectFilter)
-      })
-    },
-    projectTags() {
-      return this.$store.state.projectTags
-    },
-    serviceTags() {
-      return this.$store.state.projectTags.filter((tag) => tag.value !== 'ALL')
     }
+  },
+  mounted() {
+    const max = this.blogPosts.length
+    setInterval(() => {
+      const index =
+        this.activeCarouselIndex + 1 === max ? 0 : this.activeCarouselIndex + 1
+      this.activeCarouselIndex = index
+    }, 4000)
   },
   methods: {
     setActiveCarouselIndex(idx) {
       this.activeCarouselIndex = idx
-    },
-    setProjectFilter(value) {
-      this.projectFilter = value
-    },
-    setServiceFilter(value) {
-      this.serviceFilter = value
     }
   }
 }
@@ -242,6 +133,7 @@ export default {
 .blog-carousel {
   margin-top: -100px;
   margin-bottom: 50px;
+  z-index: 4;
 
   .carousel-indicators {
     margin-bottom: -30px;
@@ -253,22 +145,27 @@ export default {
 
   .carousel-item {
     opacity: 0;
-    transition: opacity 2s ease;
+    display: block;
+    transition: all 1s ease;
+
+    .carousel-img {
+      transform: translate(-50px, -50px);
+      transition: all 1s ease;
+    }
+    .carousel-post {
+      transform: translate(50px, 50px);
+      transition: all 1s ease;
+    }
 
     &.active {
       opacity: 1;
-    }
-  }
-}
-.nav-pills {
-  .project-nav-link {
-    text-decoration: none;
-    font-size: 0.875rem;
-    color: $secondary;
 
-    &.active {
-      background-color: $secondary;
-      color: #fff;
+      .carousel-img {
+        transform: translate(0, 0);
+      }
+      .carousel-post {
+        transform: translate(0, 0);
+      }
     }
   }
 }

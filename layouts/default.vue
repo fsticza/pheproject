@@ -2,8 +2,19 @@
   <div class="default-layout">
     <header class="container">
       <b-navbar class="main-navbar" toggleable="lg" type="light">
-        <b-navbar-brand href="#">
-          <img height="140" class="brand-img" src="/img/PHE-logo.svg" alt="" />
+        <b-navbar-brand href="/">
+          <img
+            height="54"
+            class="brand-img"
+            src="~assets/img/PHE-logo-1.png"
+            alt=""
+          />
+          <img
+            height="40"
+            class="brand-img ml-2"
+            src="~assets/img/PHE-logo-2.png"
+            alt=""
+          />
         </b-navbar-brand>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -50,21 +61,25 @@
     </GmapMap>
     <footer class="main-footer">
       <div class="container">
-        <div class="d-flex">
-          <a class="footer-link" href="">
-            <img class="footer-link-icon" src="~assets/img/map-icon.svg" />
+        <div class="row">
+          <a
+            class="footer-link col-sm-4 my-1"
+            target="_blank"
+            href="https://goo.gl/maps/njg9EcpNG8JhFRjx6"
+          >
+            <MapIcon class="footer-link-icon" />
             1096 Budapest, Tűzoltó utca 50. Manta Office
           </a>
-          <a class="footer-link" href="mailto:info@pheproject.hu">
-            <img class="footer-link-icon" src="~assets/img/email-icon.svg" />
+          <a class="footer-link col-sm-3 my-1" href="mailto:info@pheproject.hu">
+            <EmailIcon class="footer-link-icon" />
             info@pheproject.hu
           </a>
-          <a class="footer-link" href="tel:+36705263135">
-            <img class="footer-link-icon" src="~assets/img/phone-icon.svg" />
+          <a class="footer-link col-sm-2 my-1" href="tel:+36705263135">
+            <PhoneIcon class="footer-link-icon" />
             +3670 526 3135
           </a>
           <a
-            class="ml-auto"
+            class="ml-auto text-center text-sm-right col-sm-3 my-1"
             href="https://www.facebook.com/pheproject.hu/"
             target="_blank"
           >
@@ -77,6 +92,9 @@
 </template>
 
 <script>
+import MapIcon from '~/assets/img/map-icon.svg?inline'
+import EmailIcon from '~/assets/img/email-icon.svg?inline'
+import PhoneIcon from '~/assets/img/phone-icon.svg?inline'
 const customStyle = [
   {
     elementType: 'geometry',
@@ -272,7 +290,13 @@ const options = {
   fullscreenControl: true,
   styles: customStyle
 }
+
 export default {
+  components: {
+    MapIcon,
+    EmailIcon,
+    PhoneIcon
+  },
   data() {
     return {
       options
@@ -310,13 +334,11 @@ body {
 }
 
 .main-navbar {
-  padding: 0;
+  padding: 13px 0;
   .navbar-brand {
+    text-decoration: none;
     padding-bottom: 0;
     padding-top: 0;
-    margin-bottom: -78px;
-    border-right: 5px solid $body-bg;
-    border-bottom: 5px solid $body-bg;
     position: relative;
     z-index: 10;
   }
@@ -338,7 +360,6 @@ body {
   color: #fff;
   text-decoration: none;
   display: inline-block;
-  margin-right: 20px;
   font-size: 0.875rem;
 
   &:hover {
