@@ -3,9 +3,11 @@
   "location": "Budapest",
   "year": 2019,
   "tags": [
-    "RED"
+    "PM",
+    "TS",
+    "TC"
   ],
-  "image": "/img/frame-1.jpg",
+  "image": "/img/25.jpg",
   "description": "description",
   "body": "asdfasd sda asf sad sd f"
 }
