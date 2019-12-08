@@ -9,12 +9,10 @@
       />
     </div>
 
-    <div class="row mt-4">
-      <div class="col-sm-10 offset-sm-1">
-        <section>
-          <reference-list />
-        </section>
-      </div>
+    <div class="mt-4">
+      <section>
+        <reference-list />
+      </section>
     </div>
   </div>
 </template>

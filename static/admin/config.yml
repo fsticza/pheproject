@@ -72,7 +72,7 @@ collections:
     slug: '{{slug}}'
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Tag', name: 'tag', widget: 'string' }
+      - { label: 'Tag', name: 'tag', widget: 'hidden' }
       - label: 'Icon'
         name: 'icon'
         widget: 'image'

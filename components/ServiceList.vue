@@ -82,6 +82,7 @@ export default {
   .nav-link {
     text-decoration: none;
     color: #999;
+    padding-left: 0;
 
     .service-link-icon {
       opacity: 0.3;

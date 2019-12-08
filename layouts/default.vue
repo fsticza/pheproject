@@ -1,48 +1,70 @@
 <template>
   <div class="default-layout">
-    <header class="container">
-      <b-navbar class="main-navbar" toggleable="lg" type="light">
-        <b-navbar-brand href="/">
-          <img
-            height="54"
-            class="brand-img"
-            src="~assets/img/PHE-logo-1.png"
-            alt=""
-          />
-          <img
-            height="40"
-            class="brand-img ml-2"
-            src="~assets/img/PHE-logo-2.png"
-            alt=""
-          />
-        </b-navbar-brand>
+    <div class="main-padder">
+      <header class="container-fluid">
+        <b-navbar class="main-navbar" toggleable="lg" type="light">
+          <b-navbar-brand href="/">
+            <img
+              height="100"
+              class="brand-img"
+              src="~assets/img/PHE-logo.svg"
+              alt=""
+            />
+            <img
+              height="70"
+              class="brand-img ml-2"
+              src="~assets/img/PHE-logo-2.png"
+              alt=""
+            />
+          </b-navbar-brand>
 
-        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+          <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
-        <b-collapse id="nav-collapse" is-nav>
-          <b-navbar-nav class=" ml-auto">
-            <NLink class="nav-item nav-link" to="/">Főoldal</NLink>
-            <NLink class="nav-item nav-link" to="/rolunk">Rólunk</NLink>
-            <NLink class="nav-item nav-link" to="/referenciak"
-              >Referenciáink</NLink
-            >
-            <NLink class="nav-item nav-link" to="/szolgaltatasok"
-              >Szolgáltatások</NLink
-            >
-            <NLink class="nav-item nav-link" to="/blog">Híreink</NLink>
-            <NLink class="nav-item nav-link" to="/kapcsolat"
-              >Elérhetőségek</NLink
-            >
-          </b-navbar-nav>
-          <!-- <b-navbar-nav class="">
-            HU | EN
-          </b-navbar-nav> -->
-        </b-collapse>
-      </b-navbar>
-    </header>
-    <div class="main-content">
-      <div class="container">
-        <nuxt />
+          <div class="ml-auto">
+            <div class="text-center">
+              <a class="main-nav-contact-link" href="mailto:info@pheproject.hu">
+                <EmailIcon class="contact-link-icon" />
+                info@pheproject.hu
+              </a>
+              <a class="main-nav-contact-link" href="tel:+36705263135">
+                <PhoneIcon class="contact-link-icon" />
+                +3670 526 3135
+              </a>
+              <a
+                class="main-nav-contact-link"
+                target="_blank"
+                href="https://goo.gl/maps/njg9EcpNG8JhFRjx6"
+              >
+                <MapIcon class="contact-link-icon" />
+                1096 Budapest, Tűzoltó utca 50.
+              </a>
+            </div>
+
+            <div class="separator-top"></div>
+
+            <b-collapse id="nav-collapse" is-nav>
+              <b-navbar-nav class="ml-auto">
+                <NLink class="nav-item nav-link" to="/szolgaltatasok"
+                  >szolgáltatásaink</NLink
+                >
+                <NLink class="nav-item nav-link" to="/rolunk">rólunk</NLink>
+                <NLink class="nav-item nav-link" to="/referenciak"
+                  >referenciák</NLink
+                >
+                <NLink class="nav-item nav-link" to="/kapcsolat">kontakt</NLink>
+                <NLink class="nav-item nav-link" to="/blog">extra</NLink>
+              </b-navbar-nav>
+              <!-- <b-navbar-nav class="">
+                HU | EN
+              </b-navbar-nav> -->
+            </b-collapse>
+          </div>
+        </b-navbar>
+      </header>
+      <div class="main-content">
+        <div class="container-fluid">
+          <nuxt />
+        </div>
       </div>
     </div>
     <GmapMap
@@ -95,6 +117,7 @@
 import MapIcon from '~/assets/img/map-icon.svg?inline'
 import EmailIcon from '~/assets/img/email-icon.svg?inline'
 import PhoneIcon from '~/assets/img/phone-icon.svg?inline'
+
 const customStyle = [
   {
     elementType: 'geometry',
@@ -323,10 +346,25 @@ export default {
 body {
   overflow-y: scroll;
 }
+.main-nav-contact-link {
+  color: rgba(0, 0, 0, 0.5);
+  text-decoration: none;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 0.875rem;
+}
+.separator-top {
+  margin: 1em 0 0.5em;
+  height: 1px;
+  background-color: #ededed;
+}
 .default-layout {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+}
+.main-padder {
+  margin: 0 5%;
 }
 .main-content {
   display: flex;
@@ -343,7 +381,6 @@ body {
     z-index: 10;
   }
   .nav-link {
-    text-transform: uppercase;
     text-decoration: none;
 
     &.active {
