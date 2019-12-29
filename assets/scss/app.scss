@@ -1,8 +1,22 @@
 @import "./abstracts/variables";
 @import "./vendors/bootstrap";
 
+.brand-img--first {
+  height: 80px;
+  @include media-breakpoint-up(md) {
+    height: 100px;
+  }
+}
+.brand-img--second {
+  display: none;
+  @include media-breakpoint-up(md) {
+    display: inline;
+    height: 100px;
+  }
+}
+
 .head-img {
-  height: 200px;
+  height: 300px;
   position: relative;
   background-color: #e8e9e4;
   overflow: hidden;

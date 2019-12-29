@@ -2,6 +2,10 @@
   <div>
     <div class="head-img">
       <img class="img" loading="lazy" src="/img/index-head2.jpg" alt="" />
+      <h1 class="head__title">
+        <span class="first-line">mérnöki <strong>megoldások</strong></span>
+        mindenki számára
+      </h1>
     </div>
 
     <div id="blog-carousel" class="blog-carousel carousel slide">
@@ -33,7 +37,7 @@
             </div>
             <div class="col-sm-7">
               <div class="d-flex h-100 flex-column carousel-post">
-                <h1 class="mt-auto h2">{{ post.title }}</h1>
+                <h1 class="mt-auto h2 pt-2">{{ post.title }}</h1>
                 <p>
                   {{ post.description }}
                 </p>
@@ -115,6 +119,23 @@ export default {
 
 <style lang="scss">
 @import '~/assets/scss/variables';
+
+.head__title {
+  position: absolute;
+  top: 2rem;
+  left: 20%;
+  z-index: 4;
+  color: #fff;
+  text-shadow: 0 0 5px $dark;
+
+  .first-line {
+    font-size: 2.2rem;
+    display: block;
+    @include media-breakpoint-up(lg) {
+      margin-left: -50%;
+    }
+  }
+}
 .more-link {
   text-transform: uppercase;
   text-decoration: none;
@@ -136,7 +157,11 @@ export default {
   }
 
   .carousel-img-wrapper {
-    height: 300px;
+    height: 200px;
+
+    @include media-breakpoint-up(md) {
+      height: 300px;
+    }
   }
 
   .carousel-item {

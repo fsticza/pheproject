@@ -29,7 +29,10 @@
                 {{ post.description }}
               </p>
               <div>
-                <NLink :to="{ name: 'blog-blog', params: { blog: post.slug } }">
+                <NLink
+                  class="more-link"
+                  :to="{ name: 'blog-blog', params: { blog: post.slug } }"
+                >
                   Bővebben
                 </NLink>
               </div>

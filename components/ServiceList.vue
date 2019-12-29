@@ -33,7 +33,7 @@
             <h1 class="h3 mt-2">{{ service.title }}</h1>
             <p>{{ service.description }}</p>
             <div v-if="isExtended" v-html="service.body"></div>
-            <NLink v-else class="more-link" to="/szolgaltatasok">
+            <NLink v-else class="more-link" to="/services">
               Bővebben
             </NLink>
           </article>
@@ -59,7 +59,11 @@ export default {
   },
   computed: {
     services() {
-      return this.$store.state.services
+      const { state } = this.$store
+      const sortedTags = state.projectTags.map(({ value }) => value)
+      return [...state.services].sort((a, b) => {
+        return sortedTags.indexOf(a.tag) - sortedTags.indexOf(b.tag)
+      })
     }
   },
   mounted() {

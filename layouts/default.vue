@@ -6,14 +6,14 @@
           <b-navbar-brand href="/">
             <img
               height="100"
-              class="brand-img"
+              class="brand-img brand-img--first"
               src="~assets/img/PHE-logo.svg"
               alt=""
             />
             <img
-              height="70"
-              class="brand-img ml-2"
-              src="~assets/img/PHE-logo-2.png"
+              height="100"
+              class="brand-img ml-2 brand-img--second"
+              src="~assets/img/PHE-logo-2.svg"
               alt=""
             />
           </b-navbar-brand>
@@ -21,7 +21,7 @@
           <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
           <div class="ml-auto">
-            <div class="text-center">
+            <div class="text-center mt-2 mt-md-0">
               <a class="main-nav-contact-link" href="mailto:info@pheproject.hu">
                 <EmailIcon class="contact-link-icon" />
                 info@pheproject.hu

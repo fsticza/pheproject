@@ -4,7 +4,8 @@ module.exports = {
    ** Headers of the page
    */
   head: {
-    title: process.env.npm_package_name || '',
+    title:
+      'PHE project development & consulting - mérnöki megoldások mindenki számára',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -98,26 +99,30 @@ module.exports = {
   generate: {
     routes() {
       const fs = require('fs')
-      return [
-        ...fs.readdirSync('./assets/content/blog').map((file) => {
-          return {
-            route: `/blog/${file.slice(2, -5)}`, // Remove the .json from the end of the filename
-            payload: require(`./assets/content/blog/${file}`)
+      return ['blog', 'project', 'service'].reduce((accu, kind) => {
+        const basePath = `./assets/content/${kind}`
+        const renamedFiles = fs.readdirSync(basePath).map((file) => {
+          if (file.normalize('NFD').replace(/[\u0300-\u036F]/g, '') !== file) {
+            console.log('---')
+            console.log(file)
+            console.log(file.normalize('NFD').replace(/[\u0300-\u036F]/g, ''))
+            const normalizedFileName = file
+              .normalize('NFD')
+              .replace(/[\u0300-\u036F]/g, '')
+            fs.rename(
+              `${basePath}/${file}`,
+              `${basePath}/${normalizedFileName}`,
+              (whot) => console.log(whot)
+            )
+            file = normalizedFileName
           }
-        }),
-        ...fs.readdirSync('./assets/content/project').map((file) => {
           return {
-            route: `/project/${file.slice(2, -5)}`, // Remove the .json from the end of the filename
-            payload: require(`./assets/content/project/${file}`)
-          }
-        }),
-        ...fs.readdirSync('./assets/content/service').map((file) => {
-          return {
-            route: `/service/${file.slice(2, -5)}`, // Remove the .json from the end of the filename
-            payload: require(`./assets/content/service/${file}`)
+            route: `/${kind}/${file.slice(2, -5)}`, // Remove the .json from the end of the filename
+            payload: require(`./assets/content/${kind}/${file}`)
           }
         })
-      ]
+        return [...accu, ...renamedFiles]
+      }, [])
     }
   }
 }
