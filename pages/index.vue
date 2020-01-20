@@ -8,6 +8,12 @@
       </h1>
     </div>
 
+    <section class="mt-4">
+      <service-list />
+    </section>
+
+    <div class="separator"></div>
+
     <div id="blog-carousel" class="blog-carousel carousel slide">
       <ol class="carousel-indicators">
         <li
@@ -63,12 +69,6 @@
 
     <section class="my-4">
       <reference-list></reference-list>
-    </section>
-
-    <div class="separator"></div>
-
-    <section class="my-4">
-      <service-list />
     </section>
   </div>
 </template>

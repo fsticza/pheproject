@@ -27,15 +27,26 @@
             class="service-item"
             :class="serviceFilter === service.tag ? 'active' : ''"
           >
-            <div class="img-canvas" style="height: 200px">
-              <img loading="lazy" :src="service.image" class="img" alt="..." />
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="img-canvas" style="height: 220px">
+                  <img
+                    loading="lazy"
+                    :src="service.image"
+                    class="img"
+                    alt="..."
+                  />
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <h1 class="h3 mt-2">{{ service.title }}</h1>
+                <p>{{ service.description }}</p>
+                <div v-if="isExtended" v-html="service.body"></div>
+                <NLink v-else class="more-link" to="/szolgaltatasok">
+                  Bővebben
+                </NLink>
+              </div>
             </div>
-            <h1 class="h3 mt-2">{{ service.title }}</h1>
-            <p>{{ service.description }}</p>
-            <div v-if="isExtended" v-html="service.body"></div>
-            <NLink v-else class="more-link" to="/services">
-              Bővebben
-            </NLink>
           </article>
         </transition-group>
       </div>
@@ -83,8 +94,11 @@ export default {
 <style lang="scss">
 @import '~/assets/scss/variables';
 .service-nav {
+  margin-top: 15px;
+
   .nav-link {
     text-decoration: none;
+    font-size: 1.25rem;
     color: #999;
     padding-left: 0;
 
@@ -103,9 +117,8 @@ export default {
   }
 }
 .service-wrapper {
+  margin-top: 30px;
   position: relative;
-  min-height: 360px;
-
   .service-item {
     opacity: 0;
     position: absolute;
