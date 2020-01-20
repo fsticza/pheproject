@@ -70,8 +70,8 @@
     <GmapMap
       ref="gMap"
       :center="{ lat: 47.4817237, lng: 19.0761946 }"
-      :zoom="18"
-      style="height: 36vh"
+      :zoom="15"
+      style="height: 25vh"
       :options="options"
     >
       <GmapMarker

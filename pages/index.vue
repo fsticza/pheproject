@@ -38,7 +38,7 @@
             <div class="col-sm-7">
               <div class="d-flex h-100 flex-column carousel-post">
                 <h1 class="mt-auto h2 pt-2">{{ post.title }}</h1>
-                <p>
+                <p class="mb-auto">
                   {{ post.description }}
                 </p>
                 <div>
@@ -107,7 +107,7 @@ export default {
       const index =
         this.activeCarouselIndex + 1 === max ? 0 : this.activeCarouselIndex + 1
       this.activeCarouselIndex = index
-    }, 4000)
+    }, 10000)
   },
   methods: {
     setActiveCarouselIndex(idx) {
@@ -148,7 +148,7 @@ export default {
 }
 
 .blog-carousel {
-  margin-top: 30px;
+  margin-top: 50px;
   margin-bottom: 50px;
   z-index: 4;
 
@@ -168,6 +168,7 @@ export default {
     opacity: 0;
     display: block;
     transition: all 1s ease;
+    z-index: 10;
 
     .carousel-img {
       transform: translate(-50px, -50px);
@@ -180,6 +181,7 @@ export default {
 
     &.active {
       opacity: 1;
+      z-index: 11;
 
       .carousel-img {
         transform: translate(0, 0);
