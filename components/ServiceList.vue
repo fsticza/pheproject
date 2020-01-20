@@ -39,12 +39,14 @@
                 </div>
               </div>
               <div class="col-sm-6">
-                <h1 class="h3 mt-2">{{ service.title }}</h1>
-                <p>{{ service.description }}</p>
-                <div v-if="isExtended" v-html="service.body"></div>
-                <NLink v-else class="more-link" to="/szolgaltatasok">
-                  Bővebben
-                </NLink>
+                <div class="d-flex h-100 flex-column">
+                  <h1 class="h3 mt-2">{{ service.title }}</h1>
+                  <p class="mb-auto">{{ service.description }}</p>
+                  <div v-if="isExtended" v-html="service.body"></div>
+                  <NLink v-else class="more-link" to="/szolgaltatasok">
+                    Bővebben
+                  </NLink>
+                </div>
               </div>
             </div>
           </article>

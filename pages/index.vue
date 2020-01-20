@@ -43,7 +43,7 @@
             </div>
             <div class="col-sm-7">
               <div class="d-flex h-100 flex-column carousel-post">
-                <h1 class="mt-auto h2 pt-2">{{ post.title }}</h1>
+                <h1 class="h3 pt-2">{{ post.title }}</h1>
                 <p class="mb-auto">
                   {{ post.description }}
                 </p>
@@ -160,7 +160,7 @@ export default {
     height: 200px;
 
     @include media-breakpoint-up(md) {
-      height: 300px;
+      height: 220px;
     }
   }
 
