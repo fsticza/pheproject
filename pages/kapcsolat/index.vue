@@ -1,10 +1,14 @@
 <template>
   <div>
-    <div class="head-img">
-      <img class="img" loading="lazy" src="/img/office-head.jpg" alt="" />
+    <div class="head-img head-img--small">
+      <img class="img" loading="lazy" src="/img/index-head2.jpg" alt="" />
+      <h1 class="head__title">
+        <span class="first-line">mérnöki <strong>megoldások</strong></span>
+        mindenki számára
+      </h1>
     </div>
 
-    <div class="mt-4">
+    <div class="actual-content">
       <div class="row text-center">
         <a
           class="contact-link col-sm-4 my-1"

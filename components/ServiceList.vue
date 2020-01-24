@@ -32,7 +32,7 @@
                 <div class="img-canvas" style="height: 220px">
                   <img
                     loading="lazy"
-                    :src="service.image"
+                    :src="`${service.image}?nf_resize=fit&h=440`"
                     class="img"
                     alt="..."
                   />
@@ -41,9 +41,19 @@
               <div class="col-sm-6">
                 <div class="d-flex h-100 flex-column">
                   <h1 class="h3 mt-2">{{ service.title }}</h1>
-                  <p class="mb-auto">{{ service.description }}</p>
-                  <div v-if="isExtended" v-html="service.body"></div>
-                  <NLink v-else class="more-link" to="/szolgaltatasok">
+                  <div class="mb-auto">
+                    {{ service.description }}
+                    <div
+                      v-if="isExtended"
+                      class="mt-2"
+                      v-html="service.body"
+                    ></div>
+                  </div>
+                  <NLink
+                    v-if="!isExtended"
+                    class="more-link"
+                    to="/szolgaltatasok"
+                  >
                     Bővebben
                   </NLink>
                 </div>
@@ -96,8 +106,6 @@ export default {
 <style lang="scss">
 @import '~/assets/scss/variables';
 .service-nav {
-  margin-top: 15px;
-
   .nav-link {
     text-decoration: none;
     font-size: 1.25rem;
@@ -119,7 +127,6 @@ export default {
   }
 }
 .service-wrapper {
-  margin-top: 30px;
   position: relative;
   .service-item {
     opacity: 0;

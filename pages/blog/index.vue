@@ -1,15 +1,14 @@
 <template>
   <div>
-    <div class="head-img">
-      <img
-        class="img"
-        loading="lazy"
-        src="/img/construction-head-4.jpg"
-        alt=""
-      />
+    <div class="head-img head-img--small">
+      <img class="img" loading="lazy" src="/img/index-head2.jpg" alt="" />
+      <h1 class="head__title">
+        <span class="first-line">mérnöki <strong>megoldások</strong></span>
+        mindenki számára
+      </h1>
     </div>
 
-    <div class="mt-4">
+    <div class="actual-content">
       <section>
         <article
           v-for="(post, idx) in blogPosts"
@@ -47,7 +46,6 @@
 export default {
   computed: {
     blogPosts() {
-      console.log(this.$store.state.blogPosts)
       return this.$store.state.blogPosts
     }
   }

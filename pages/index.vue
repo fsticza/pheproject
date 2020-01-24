@@ -8,68 +8,70 @@
       </h1>
     </div>
 
-    <section class="mt-4">
-      <service-list />
-    </section>
+    <div class="actual-content">
+      <section class="mt-4">
+        <service-list />
+      </section>
 
-    <div class="separator"></div>
+      <div class="separator"></div>
 
-    <div id="blog-carousel" class="blog-carousel carousel slide">
-      <ol class="carousel-indicators">
-        <li
-          v-for="(post, idx) in blogPosts"
-          :key="`post-${idx}`"
-          :class="idx === activeCarouselIndex ? 'active' : ''"
-          @click="setActiveCarouselIndex(idx)"
-        ></li>
-      </ol>
-      <transition-group name="carousel" tag="div" class="carousel-inner">
-        <div
-          v-for="(post, idx) in blogPosts"
-          :key="`post-${idx}`"
-          class="carousel-item"
-          :class="idx === activeCarouselIndex ? 'active' : ''"
-        >
-          <div class="row">
-            <div class="col-sm-5">
-              <div class="img-canvas carousel-img-wrapper">
-                <img
-                  :src="post.cover"
-                  loading="lazy"
-                  class="carousel-img img"
-                  alt="..."
-                />
+      <div id="blog-carousel" class="blog-carousel carousel slide">
+        <ol class="carousel-indicators">
+          <li
+            v-for="(post, idx) in blogPosts"
+            :key="`post-${idx}`"
+            :class="idx === activeCarouselIndex ? 'active' : ''"
+            @click="setActiveCarouselIndex(idx)"
+          ></li>
+        </ol>
+        <transition-group name="carousel" tag="div" class="carousel-inner">
+          <div
+            v-for="(post, idx) in blogPosts"
+            :key="`post-${idx}`"
+            class="carousel-item"
+            :class="idx === activeCarouselIndex ? 'active' : ''"
+          >
+            <div class="row">
+              <div class="col-sm-5">
+                <div class="img-canvas carousel-img-wrapper">
+                  <img
+                    :src="post.cover"
+                    loading="lazy"
+                    class="carousel-img img"
+                    alt="..."
+                  />
+                </div>
               </div>
-            </div>
-            <div class="col-sm-7">
-              <div class="d-flex h-100 flex-column carousel-post">
-                <h1 class="h3 pt-2">{{ post.title }}</h1>
-                <p class="mb-auto">
-                  {{ post.description }}
-                </p>
-                <div>
-                  <NLink
-                    class="more-link"
-                    :to="{
-                      name: 'blog-blog',
-                      params: { blog: post.slug }
-                    }"
-                  >
-                    Bővebben
-                  </NLink>
+              <div class="col-sm-7">
+                <div class="d-flex h-100 flex-column carousel-post">
+                  <h1 class="h3 pt-2">{{ post.title }}</h1>
+                  <p class="mb-auto">
+                    {{ post.description }}
+                  </p>
+                  <div>
+                    <NLink
+                      class="more-link"
+                      :to="{
+                        name: 'blog-blog',
+                        params: { blog: post.slug }
+                      }"
+                    >
+                      Bővebben
+                    </NLink>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </transition-group>
+        </transition-group>
+      </div>
+
+      <div class="separator"></div>
+
+      <section class="my-4">
+        <reference-list></reference-list>
+      </section>
     </div>
-
-    <div class="separator"></div>
-
-    <section class="my-4">
-      <reference-list></reference-list>
-    </section>
   </div>
 </template>
 
@@ -120,22 +122,6 @@ export default {
 <style lang="scss">
 @import '~/assets/scss/variables';
 
-.head__title {
-  position: absolute;
-  top: 2rem;
-  left: 20%;
-  z-index: 4;
-  color: #fff;
-  text-shadow: 0 0 5px $dark;
-
-  .first-line {
-    font-size: 2.2rem;
-    display: block;
-    @include media-breakpoint-up(lg) {
-      margin-left: -50%;
-    }
-  }
-}
 .more-link {
   text-transform: uppercase;
   text-decoration: none;

@@ -1,10 +1,14 @@
 <template>
   <article>
-    <div class="head-img">
-      <img class="img" loading="lazy" :src="project.image" alt="" />
+    <div class="head-img head-img--small">
+      <img class="img" loading="lazy" src="/img/index-head2.jpg" alt="" />
+      <h1 class="head__title">
+        <span class="first-line">mérnöki <strong>megoldások</strong></span>
+        mindenki számára
+      </h1>
     </div>
 
-    <div class="mt-4">
+    <div class="actual-content">
       <h1>{{ project.title }}</h1>
       <div v-html="$md.render(project.body)" />
     </div>

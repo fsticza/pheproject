@@ -365,9 +365,8 @@ body {
 }
 .main-padder {
   margin: 0 5%;
-}
-.main-content {
   display: flex;
+  flex-direction: column;
   flex: 1;
 }
 

@@ -1,13 +1,17 @@
 <template>
   <div>
-    <div class="head-img">
-      <img class="img" loading="lazy" src="/img/office-head.jpg" alt="" />
+    <div class="head-img head-img--small">
+      <img class="img" loading="lazy" src="/img/index-head2.jpg" alt="" />
+      <h1 class="head__title">
+        <span class="first-line">mérnöki <strong>megoldások</strong></span>
+        mindenki számára
+      </h1>
     </div>
 
-    <div class="mt-4">
+    <div class="actual-content">
       <div class="row mt-4">
         <div class="col-sm-6">
-          <h1>Rólunk</h1>
+          <h1 class="h3">Rólunk</h1>
           <p class="mt-4">
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
             commodo ligula eget dolor. Aenean massa. Cum sociis natoque
@@ -16,7 +20,7 @@
           </p>
         </div>
         <div class="col-sm-6">
-          <h2 class="mt-1">Víziónk</h2>
+          <h2 class="mt-1 h3">Víziónk</h2>
           <blockquote class="blockquote">
             Lorem ipsum dolor <strong>sit amet</strong>, <br />
             consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
