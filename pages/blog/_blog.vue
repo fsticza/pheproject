@@ -8,16 +8,16 @@
       </h1>
     </div>
     <article class="actual-content">
-      <img
-        class="img float-left mr-4 mb-4"
-        width="50%"
-        loading="lazy"
-        :src="blogPost.cover"
-        alt=""
-      />
-      <div>
-        <h1 class="h3 mb-4">{{ blogPost.title }}</h1>
-        <div class="text-justify" v-html="$md.render(blogPost.body)" />
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="img-canvas" style="height: 400px">
+            <img class="img" loading="lazy" :src="blogPost.cover" alt="" />
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <h1 class="h3 mb-4">{{ blogPost.title }}</h1>
+          <div class="text-justify" v-html="$md.render(blogPost.body)" />
+        </div>
       </div>
     </article>
   </div>

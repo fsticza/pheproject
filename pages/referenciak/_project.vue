@@ -9,8 +9,17 @@
     </div>
 
     <div class="actual-content">
-      <h1>{{ project.title }}</h1>
-      <div v-html="$md.render(project.body)" />
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="img-canvas" style="height: 400px">
+            <img class="img" loading="lazy" :src="project.image" alt="" />
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <h1 class="h3 mb-4">{{ project.title }}</h1>
+          <div class="text-justify" v-html="$md.render(project.body)" />
+        </div>
+      </div>
     </div>
   </article>
 </template>
