@@ -27,8 +27,6 @@
   }
 
   &--small {
-    height: 150px;
-
     @include media-breakpoint-up(md) {
       height: 200px;
     }

@@ -18,10 +18,34 @@
             />
           </b-navbar-brand>
 
-          <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+          <b-navbar-toggle
+            class="ml-auto"
+            target="nav-collapse"
+          ></b-navbar-toggle>
 
-          <div class="ml-auto">
-            <div class="text-center mt-2 mt-md-0">
+          <b-collapse
+            id="nav-collapse"
+            class="main-nav-collapse ml-lg-auto"
+            is-nav
+          >
+            <b-navbar-nav class="main-nav-items">
+              <NLink class="nav-item nav-link" to="/szolgaltatasok"
+                >szolgáltatásaink</NLink
+              >
+              <NLink class="nav-item nav-link" to="/rolunk">rólunk</NLink>
+              <NLink class="nav-item nav-link" to="/referenciak"
+                >referenciák</NLink
+              >
+              <NLink class="nav-item nav-link" to="/kapcsolat">kontakt</NLink>
+              <NLink class="nav-item nav-link" to="/blog">extra</NLink>
+            </b-navbar-nav>
+            <!-- <b-navbar-nav class="">
+                HU | EN
+              </b-navbar-nav> -->
+
+            <div class="separator-top"></div>
+
+            <div class="text-center main-nav-contact mt-2 mt-md-0">
               <a class="main-nav-contact-link" href="mailto:info@pheproject.hu">
                 <EmailIcon class="contact-link-icon" />
                 info@pheproject.hu
@@ -39,26 +63,7 @@
                 1096 Budapest, Tűzoltó utca 50.
               </a>
             </div>
-
-            <div class="separator-top"></div>
-
-            <b-collapse id="nav-collapse" is-nav>
-              <b-navbar-nav class="ml-auto">
-                <NLink class="nav-item nav-link" to="/szolgaltatasok"
-                  >szolgáltatásaink</NLink
-                >
-                <NLink class="nav-item nav-link" to="/rolunk">rólunk</NLink>
-                <NLink class="nav-item nav-link" to="/referenciak"
-                  >referenciák</NLink
-                >
-                <NLink class="nav-item nav-link" to="/kapcsolat">kontakt</NLink>
-                <NLink class="nav-item nav-link" to="/blog">extra</NLink>
-              </b-navbar-nav>
-              <!-- <b-navbar-nav class="">
-                HU | EN
-              </b-navbar-nav> -->
-            </b-collapse>
-          </div>
+          </b-collapse>
         </b-navbar>
       </header>
       <div class="main-content">
@@ -346,15 +351,45 @@ export default {
 body {
   overflow-y: scroll;
 }
+.main-nav-collapse {
+  flex-direction: column;
+  width: 100%;
+
+  .nav-link {
+    text-align: center;
+  }
+  .main-nav-contact-link {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  @include media-breakpoint-up(md) {
+    flex-grow: initial;
+    width: auto;
+
+    .main-nav-contact-link {
+      display: inline-block;
+    }
+  }
+}
+.main-nav-items {
+  width: 100%;
+  justify-content: space-between;
+}
+.main-nav-contact {
+  width: 100%;
+  justify-content: space-between;
+}
 .main-nav-contact-link {
   color: rgba(0, 0, 0, 0.5);
   text-decoration: none;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
   font-size: 0.875rem;
 }
 .separator-top {
-  margin: 1em 0 0.5em;
+  margin: 0.25em 0 0.5em;
+  width: 100%;
   height: 1px;
   background-color: #ededed;
 }

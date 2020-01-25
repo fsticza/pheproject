@@ -28,8 +28,8 @@
             :class="serviceFilter === service.tag ? 'active' : ''"
           >
             <div class="row">
-              <div class="col-sm-6">
-                <div class="img-canvas" style="height: 220px">
+              <div class="col-md-6">
+                <div class="img-canvas mt-3" style="height: 220px">
                   <img
                     loading="lazy"
                     :src="`${service.image}?nf_resize=fit&h=440`"
@@ -38,10 +38,10 @@
                   />
                 </div>
               </div>
-              <div class="col-sm-6">
+              <div class="col-md-6">
                 <div class="d-flex h-100 flex-column">
                   <h1 class="h3 mt-2">{{ service.title }}</h1>
-                  <div class="mb-auto">
+                  <div class="mb-auto text-justify">
                     {{ service.description }}
                     <div
                       v-if="isExtended"
@@ -51,7 +51,7 @@
                   </div>
                   <NLink
                     v-if="!isExtended"
-                    class="more-link"
+                    class="more-link mb-3"
                     to="/szolgaltatasok"
                   >
                     Bővebben
@@ -106,6 +106,8 @@ export default {
 <style lang="scss">
 @import '~/assets/scss/variables';
 .service-nav {
+  position: relative;
+  z-index: 10;
   .nav-link {
     text-decoration: none;
     font-size: 1.25rem;
@@ -117,7 +119,7 @@ export default {
     }
 
     &.active {
-      font-weight: bold;
+      *font-weight: bold;
       color: $body-color;
 
       .service-link-icon {
@@ -127,15 +129,21 @@ export default {
   }
 }
 .service-wrapper {
-  position: relative;
+  overflow: hidden;
+
   .service-item {
     opacity: 0;
-    position: absolute;
     width: 100%;
+    position: absolute;
+    transform: translateY(-100%);
     transition: all 0.5s ease;
+    z-index: 0;
 
     &.active {
+      transform: translateY(0);
       opacity: 1;
+      position: relative;
+      z-index: 11;
     }
   }
 }
