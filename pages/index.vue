@@ -44,7 +44,7 @@
               </div>
               <div class="col-sm-7">
                 <div class="d-flex h-100 flex-column carousel-post">
-                  <h1 class="h3 pt-2">{{ post.title }}</h1>
+                  <h1 class="h3 pt-1">{{ post.title }}</h1>
                   <p class="mb-auto">
                     {{ post.description }}
                   </p>
@@ -128,14 +128,14 @@ export default {
 }
 
 .separator {
-  margin: 3em 0;
+  margin: 50px 0;
   height: 1px;
   background-color: #ededed;
 }
 
 .blog-carousel {
   margin-top: 50px;
-  margin-bottom: 50px;
+  margin-bottom: 70px;
   z-index: 4;
 
   .carousel-indicators {

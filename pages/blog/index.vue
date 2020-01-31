@@ -23,7 +23,7 @@
               </div>
             </div>
             <div class="col-sm-8">
-              <h1 class="h3">{{ post.title }}</h1>
+              <h1 class="h3 pt-3">{{ post.title }}</h1>
               <p>
                 {{ post.description }}
               </p>

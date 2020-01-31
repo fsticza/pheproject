@@ -9,24 +9,26 @@
     </div>
 
     <div class="actual-content">
-      <div class="row mt-4">
-        <div class="col-sm-6">
-          <h1 class="h3">Rólunk</h1>
-          <p class="mt-4">
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-            commodo ligula eget dolor. Aenean massa. Cum sociis natoque
-            penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-            Donec quam felis, ultricies nec, pellentesque eu.
-          </p>
-        </div>
-        <div class="col-sm-6">
-          <h2 class="mt-1 h3">Víziónk</h2>
-          <blockquote class="blockquote">
-            Lorem ipsum dolor <strong>sit amet</strong>, <br />
-            consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-            <strong>Aenean massa</strong>. Cum sociis natoque.
-          </blockquote>
-        </div>
+      <div class="mt-4">
+        <h1 class="h3">Rólunk</h1>
+        <p class="mt-4">
+          Cégünk a PHE Project development & consulting azzal a céllal jött
+          létre, hogy külföldi tapasztalatainkat kamatoztatva, napjaink
+          elvárásának megfelelő, magas színvonalú mérnöki támogatást nyújtsunk
+          közép- és nagy léptékű építőipari beruházások megvalósításában.
+          Tevékenységünk kiterjed a projektmenedzsment, a beruházás lebonyolítás
+          és a műszaki ellenőrzési feladatokra, illetve kiemelten kezeljük
+          Megrendelőink szakmai támogatását és műszaki tanácsadását a közös
+          munka során. Tapasztalt kollégáinkkal a szakági területeken, az
+          épületgépészeti és az épületvillamossági, illetve épületautomatizálási
+          és üzemeltetési kérdésekben is megfelelő javaslatokat és megoldásokat
+          kínálunk.
+        </p>
+        <p>
+          Ezek mellett kisebb léptékű, saját ingatlanfejlesztési és
+          ingatlanhasznosítási projekteken dolgozunk Magyarországon és
+          külföldön.
+        </p>
       </div>
     </div>
   </div>

@@ -29,7 +29,7 @@
         <div class="img-canvas" style="height: 200px">
           <img loading="lazy" :src="project.image" class="img" alt="..." />
         </div>
-        <h1 class="h3 mt-2">{{ project.title }}</h1>
+        <h1 class="h3 pt-3">{{ project.title }}</h1>
         <p>{{ project.description }}</p>
         <NLink
           class="more-link"

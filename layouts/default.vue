@@ -76,7 +76,7 @@
       ref="gMap"
       :center="{ lat: 47.4817237, lng: 19.0761946 }"
       :zoom="15"
-      style="height: 25vh"
+      style="height: 20vh"
       :options="options"
     >
       <GmapMarker
@@ -336,6 +336,7 @@ export default {
     }
   },
   mounted() {
+    console.log(this.$refs.gMap)
     this.$refs.gMap.$el.style.width = `${document.body.clientWidth}px`
 
     window.onresize = () => {

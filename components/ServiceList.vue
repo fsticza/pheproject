@@ -40,7 +40,7 @@
               </div>
               <div class="col-md-6">
                 <div class="d-flex h-100 flex-column">
-                  <h1 class="h3 mt-2">{{ service.title }}</h1>
+                  <h1 class="h3 pt-3">{{ service.title }}</h1>
                   <div class="mb-auto text-justify">
                     {{ service.description }}
                     <div
@@ -51,8 +51,8 @@
                   </div>
                   <NLink
                     v-if="!isExtended"
-                    class="more-link mb-3"
-                    to="/szolgaltatasok"
+                    class="more-link mb-md-2"
+                    :to="{ path: '/szolgaltatasok', hash: `#${service.tag}` }"
                   >
                     Bővebben
                   </NLink>
@@ -90,7 +90,8 @@ export default {
     }
   },
   mounted() {
-    const tag = this.$store.$router.history.current.query.tag
+    const { hash } = this.$store.$router.history.current
+    const tag = hash && hash.substr(1)
     if (tag) {
       this.serviceFilter = tag
     }

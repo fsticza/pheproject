@@ -16,7 +16,7 @@
           </div>
         </div>
         <div class="col-sm-6">
-          <h1 class="h3 mb-4">{{ project.title }}</h1>
+          <h1 class="h3 pt-3 mb-4">{{ project.title }}</h1>
           <div class="text-justify" v-html="$md.render(project.body)" />
         </div>
       </div>
