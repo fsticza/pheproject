@@ -30,11 +30,18 @@ export const actions = {
       false,
       /\.json$/
     )
-    const blogPosts = blogFiles.keys().map((key) => {
-      const res = blogFiles(key)
-      res.slug = key.slice(2, -5)
-      return res
-    })
+    const blogPosts = blogFiles
+      .keys()
+      .map((key) => {
+        const res = blogFiles(key)
+        res.slug = key.slice(2, -5)
+        return res
+      })
+      .sort((post1, post2) => {
+        return new Date(post1.date).getTime() > new Date(post2.date).getTime()
+          ? -1
+          : 1
+      })
     await commit('setBlogPosts', blogPosts)
 
     const projectFiles = await require.context(

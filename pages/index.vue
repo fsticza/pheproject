@@ -15,13 +15,18 @@
 
       <div class="separator"></div>
 
-      <div id="blog-carousel" class="blog-carousel carousel slide">
+      <div
+        id="blog-carousel"
+        class="blog-carousel carousel slide"
+        @mouseover="onCarouselMouseover"
+        @mouseout="onCarouselMouseout"
+      >
         <ol class="carousel-indicators">
           <li
             v-for="(post, idx) in blogPosts"
             :key="`post-${idx}`"
             :class="idx === activeCarouselIndex ? 'active' : ''"
-            @click="setActiveCarouselIndex(idx)"
+            @click="onCarouselIndicatorClick(idx)"
           ></li>
         </ol>
         <transition-group name="carousel" tag="div" class="carousel-inner">
@@ -68,7 +73,7 @@
 
       <div class="separator"></div>
 
-      <section class="my-4">
+      <section class="mt-4">
         <reference-list></reference-list>
       </section>
     </div>
@@ -86,7 +91,8 @@ export default {
   },
   data() {
     return {
-      activeCarouselIndex: 0
+      activeCarouselIndex: 0,
+      carouselInterval: null
     }
   },
   head() {
@@ -104,16 +110,36 @@ export default {
     }
   },
   mounted() {
-    const max = this.blogPosts.length
-    setInterval(() => {
-      const index =
-        this.activeCarouselIndex + 1 === max ? 0 : this.activeCarouselIndex + 1
-      this.activeCarouselIndex = index
-    }, 10000)
+    this.initCarousel()
   },
   methods: {
+    onCarouselMouseover() {
+      this.stopCarousel()
+    },
+    onCarouselMouseout() {
+      this.initCarousel()
+    },
+    onCarouselIndicatorClick(idx) {
+      this.setActiveCarouselIndex(idx)
+    },
     setActiveCarouselIndex(idx) {
       this.activeCarouselIndex = idx
+    },
+    stopCarousel() {
+      if (this.carouselInterval) {
+        clearInterval(this.carouselInterval)
+      }
+    },
+    initCarousel() {
+      const max = this.blogPosts.length
+      this.stopCarousel()
+      this.carouselInterval = setInterval(() => {
+        const index =
+          this.activeCarouselIndex + 1 === max
+            ? 0
+            : this.activeCarouselIndex + 1
+        this.activeCarouselIndex = index
+      }, 6000)
     }
   }
 }
@@ -121,11 +147,6 @@ export default {
 
 <style lang="scss">
 @import '~/assets/scss/variables';
-
-.more-link {
-  text-transform: uppercase;
-  text-decoration: none;
-}
 
 .separator {
   margin: 50px 0;

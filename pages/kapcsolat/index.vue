@@ -34,7 +34,7 @@
             height="500"
             class="img-cover"
             loading="lazy"
-            src="/img/mantra-office.jpg"
+            src="/img/mantra-office-2.png"
             alt=""
           />
         </div>
@@ -103,6 +103,11 @@ export default {
   data() {
     return {
       isSuccess: false
+    }
+  },
+  head() {
+    return {
+      title: 'PHE project development & consulting - Kapcsolat'
     }
   },
   mounted() {

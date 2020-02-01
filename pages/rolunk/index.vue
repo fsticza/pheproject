@@ -11,7 +11,7 @@
     <div class="actual-content">
       <div class="mt-4">
         <h1 class="h3">Rólunk</h1>
-        <p class="mt-4">
+        <p class="mt-4 text-justify">
           Cégünk a PHE Project development & consulting azzal a céllal jött
           létre, hogy külföldi tapasztalatainkat kamatoztatva, napjaink
           elvárásának megfelelő, magas színvonalú mérnöki támogatást nyújtsunk
@@ -36,7 +36,12 @@
 
 <script>
 export default {
-  components: {}
+  components: {},
+  head() {
+    return {
+      title: 'PHE project development & consulting - Rólunk'
+    }
+  }
 }
 </script>
 

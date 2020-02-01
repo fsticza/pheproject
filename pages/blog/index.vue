@@ -16,20 +16,20 @@
           class="my-4"
           :class="idx === 0 ? 'active' : ''"
         >
-          <div class="row align-items-center">
+          <div class="row">
             <div class="col-sm-4">
               <div class="img-canvas" style="height: 200px">
                 <img loading="lazy" :src="post.cover" class="img" alt="..." />
               </div>
             </div>
             <div class="col-sm-8">
-              <h1 class="h3 pt-3">{{ post.title }}</h1>
-              <p>
-                {{ post.description }}
-              </p>
-              <div>
+              <div class="d-flex h-100 flex-column">
+                <h1 class="h3 pt-1">{{ post.title }}</h1>
+                <p class="mb-auto">
+                  {{ post.description }}
+                </p>
                 <NLink
-                  class="more-link"
+                  class="more-link mt-2 mb-md-2"
                   :to="{ name: 'blog-blog', params: { blog: post.slug } }"
                 >
                   Bővebben
@@ -47,6 +47,11 @@ export default {
   computed: {
     blogPosts() {
       return this.$store.state.blogPosts
+    }
+  },
+  head() {
+    return {
+      title: 'PHE project development & consulting - Extrák'
     }
   }
 }

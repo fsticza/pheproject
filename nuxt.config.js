@@ -4,19 +4,22 @@ module.exports = {
    ** Headers of the page
    */
   head: {
-    title:
-      'PHE project development & consulting - mérnöki megoldások mindenki számára',
+    title: 'PHE project development & consulting',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {
         hid: 'description',
         name: 'description',
-        content: process.env.npm_package_description || ''
+        content: 'Mérnöki megoldások mindenki számára'
       },
       {
         name: 'theme-color',
         content: '#8b9db5'
+      },
+      {
+        property: 'og:image',
+        content: '/img/index-head2.jpg'
       }
     ],
     link: [

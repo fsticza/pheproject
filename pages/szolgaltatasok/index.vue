@@ -22,6 +22,11 @@ import ServiceList from '../../components/ServiceList'
 export default {
   components: {
     ServiceList
+  },
+  head() {
+    return {
+      title: 'PHE project development & consulting - Szolgáltatások'
+    }
   }
 }
 </script>

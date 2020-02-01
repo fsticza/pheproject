@@ -21,6 +21,11 @@ export default {
   components: {
     ReferenceList
   },
+  head() {
+    return {
+      title: 'PHE project development & consulting - Referenciák'
+    }
+  },
   computed: {
     projects() {
       return this.$store.state.projects

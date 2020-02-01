@@ -43,15 +43,10 @@
                   <h1 class="h3 pt-3">{{ service.title }}</h1>
                   <div class="mb-auto text-justify">
                     {{ service.description }}
-                    <div
-                      v-if="isExtended"
-                      class="mt-2"
-                      v-html="service.body"
-                    ></div>
                   </div>
                   <NLink
                     v-if="!isExtended"
-                    class="more-link mb-md-2"
+                    class="more-link mt-2 mb-md-2"
                     :to="{ path: '/szolgaltatasok', hash: `#${service.tag}` }"
                   >
                     Bővebben
@@ -59,6 +54,11 @@
                 </div>
               </div>
             </div>
+            <div
+              v-if="isExtended"
+              class="mt-4 text-justify"
+              v-html="service.body"
+            ></div>
           </article>
         </transition-group>
       </div>

@@ -30,6 +30,11 @@ export default {
       return {
         blogPost: await require(`~/assets/content/blog/${params.blog}.json`)
       }
+  },
+  head() {
+    return {
+      title: `${this.blogPost.title} - PHE project development & consulting`
+    }
   }
 }
 </script>

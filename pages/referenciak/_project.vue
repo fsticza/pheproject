@@ -31,6 +31,11 @@ export default {
       return {
         project: await require(`~/assets/content/project/${params.project}.json`)
       }
+  },
+  head() {
+    return {
+      title: `${this.project.title} - PHE project development & consulting`
+    }
   }
 }
 </script>

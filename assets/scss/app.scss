@@ -65,8 +65,13 @@
 .actual-content {
   margin: 2rem 0;
   @include media-breakpoint-up(md) {
-    margin-top: 4rem;
+    margin: 4rem 0;
   }
+}
+
+.more-link {
+  text-transform: uppercase;
+  text-decoration: none;
 }
 
 .img-cover {

@@ -12,7 +12,7 @@
         >
       </li>
     </ul>
-    <div class="row mb-4">
+    <div class="row">
       <div
         v-if="!filteredProjects.length"
         class="alert alert-info my-4 col-sm-6 offset-sm-3 text-center"
@@ -23,7 +23,7 @@
         v-for="(project, idx) in filteredProjects"
         v-else
         :key="idx"
-        class="my-4 col-sm-4"
+        class="mt-4 col-sm-4"
         :class="idx === 0 ? 'active' : ''"
       >
         <div class="img-canvas" style="height: 200px">
