@@ -27,7 +27,7 @@ collections:
       - { label: 'Description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
   - name: 'project'
-    label: 'Project'
+    label: 'Projects'
     format: 'json'
     folder: 'assets/content/project'
     create: true
@@ -63,7 +63,11 @@ collections:
             multiple: true
       - { label: 'Description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
-  - name: 'services'
+      - label: "Gallery"
+        name: "galleryImages"
+        widget: "list"
+        field: {label: Image, name: image, widget: image}
+  - name: 'service'
     label: 'Services'
     format: 'json'
     create: false
