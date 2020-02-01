@@ -58,7 +58,10 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [{ src: '~/plugins/google-maps.js', ssr: false }],
+  plugins: [
+    { src: '~/plugins/google-maps.js', ssr: false },
+    { src: '~/plugins/lightGallery.client.js', ssr: false }
+  ],
   /*
    ** Nuxt.js dev-modules
    */

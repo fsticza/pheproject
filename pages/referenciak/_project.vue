@@ -20,11 +20,45 @@
           <div class="text-justify" v-html="$md.render(project.body)" />
         </div>
       </div>
+
+      <LightGallery
+        :images="project.galleryImages"
+        :index="galleryIndex"
+        :disable-scroll="true"
+        @close="galleryIndex = null"
+      />
+
+      <div class="images-wrapper mt-4">
+        <div class="row">
+          <div
+            v-for="(url, imageIndex) in project.galleryImages"
+            :key="imageIndex"
+            class="col-sm-6 col-md-4 col-lg-3 col-xl-2"
+          >
+            <div class="img-canvas my-2" style="height: 200px">
+              <img
+                class="img"
+                style="cursor:pointer;"
+                loading="lazy"
+                :src="url"
+                alt=""
+                @click="galleryIndex = imageIndex"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </article>
 </template>
 <script>
 export default {
+  components: {},
+  data() {
+    return {
+      galleryIndex: null
+    }
+  },
   async asyncData({ params, payload }) {
     if (payload) return { project: payload }
     else

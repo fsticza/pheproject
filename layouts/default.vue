@@ -336,7 +336,6 @@ export default {
     }
   },
   mounted() {
-    console.log(this.$refs.gMap)
     this.$refs.gMap.$el.style.width = `${document.body.clientWidth}px`
 
     window.onresize = () => {
