@@ -43,7 +43,7 @@
             name="contact"
             class="my-4 contact-form"
             method="POST"
-            action="/kapcsolat/#success"
+            action="/kapcsolat/?success=1"
             data-netlify="true"
             data-netlify-honeypot="bot-field"
           >
@@ -112,11 +112,10 @@ export default {
   },
   created() {
     if (process.client) {
-      console.log(location.hash)
-      this.isSuccess = location.hash === '#success'
+      this.isSuccess = !!this.$route.query.success
       setTimeout(() => {
-        location.hash = ''
-      }, 5000)
+        this.isSuccess = false
+      }, 10000)
     }
   }
 }
