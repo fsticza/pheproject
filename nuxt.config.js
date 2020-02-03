@@ -105,7 +105,7 @@ module.exports = {
   generate: {
     routes() {
       const fs = require('fs')
-      return ['blog', 'project', 'service'].reduce((accu, kind) => {
+      return ['blog', 'project'].reduce((accu, kind) => {
         const basePath = `./assets/content/${kind}`
         const renamedFiles = fs.readdirSync(basePath).map((file) => {
           if (file.normalize('NFD').replace(/[\u0300-\u036F]/g, '') !== file) {
@@ -120,6 +120,7 @@ module.exports = {
               `${basePath}/${normalizedFileName}`,
               (whot) => console.log(whot)
             )
+
             file = normalizedFileName
           }
           return {
