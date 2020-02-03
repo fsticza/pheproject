@@ -11,9 +11,9 @@
               alt=""
             />
             <img
-              height="100"
+              height="80"
               class="brand-img ml-2 brand-img--second"
-              src="~assets/img/PHE-logo-2.svg"
+              src="~assets/img/PHE-logo-2.png"
               alt=""
             />
           </b-navbar-brand>
@@ -29,15 +29,33 @@
             is-nav
           >
             <b-navbar-nav class="main-nav-items">
-              <NLink class="nav-item nav-link" to="/szolgaltatasok"
+              <NLink
+                class="nav-item nav-link"
+                active-class="active"
+                to="/szolgaltatasok"
                 >szolgáltatásaink</NLink
               >
-              <NLink class="nav-item nav-link" to="/rolunk">rólunk</NLink>
-              <NLink class="nav-item nav-link" to="/referenciak"
+              <NLink
+                class="nav-item nav-link"
+                active-class="active"
+                to="/rolunk"
+                >rólunk</NLink
+              >
+              <NLink
+                class="nav-item nav-link"
+                active-class="active"
+                to="/referenciak"
                 >referenciák</NLink
               >
-              <NLink class="nav-item nav-link" to="/kapcsolat">kontakt</NLink>
-              <NLink class="nav-item nav-link" to="/blog">extra</NLink>
+              <NLink
+                class="nav-item nav-link"
+                active-class="active"
+                to="/kapcsolat"
+                >kontakt</NLink
+              >
+              <NLink class="nav-item nav-link" active-class="active" to="/blog"
+                >extra</NLink
+              >
             </b-navbar-nav>
             <!-- <b-navbar-nav class="">
                 HU | EN
@@ -76,8 +94,8 @@
       ref="gMap"
       :center="{ lat: 47.4817237, lng: 19.0761946 }"
       :zoom="15"
-      style="height: 20vh"
       :options="options"
+      style="height: 20vh"
     >
       <GmapMarker
         :position="{ lat: 47.4817237, lng: 19.0761946 }"
