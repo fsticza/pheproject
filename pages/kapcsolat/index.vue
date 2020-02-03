@@ -48,6 +48,7 @@
             data-netlify="true"
             data-netlify-honeypot="bot-field"
           >
+            <div></div>
             <div id="success" v-show="isSuccess" class="alert alert-success">
               Az üzenetet sikeresen megkaptuk, köszönjük!
             </div>
@@ -120,6 +121,7 @@ export default {
   methods: {
     onContactSubmit(ev) {
       const formData = new FormData()
+      formData.append('form-name', 'contact')
       formData.append('name', this.name)
       formData.append('email', this.email)
       formData.append('message', this.message)
