@@ -43,7 +43,7 @@
             name="contact"
             class="my-4 contact-form"
             method="POST"
-            action="/kapcsolat#success"
+            action="/kapcsolat/#success"
             data-netlify="true"
             data-netlify-honeypot="bot-field"
           >
