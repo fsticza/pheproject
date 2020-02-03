@@ -17,9 +17,9 @@
 
       <div
         id="blog-carousel"
-        class="blog-carousel carousel slide"
         @mouseover="onCarouselMouseover"
         @mouseout="onCarouselMouseout"
+        class="blog-carousel carousel slide"
       >
         <ol class="carousel-indicators">
           <li
@@ -33,8 +33,8 @@
           <div
             v-for="(post, idx) in blogPosts"
             :key="`post-${idx}`"
-            class="carousel-item"
             :class="idx === activeCarouselIndex ? 'active' : ''"
+            class="carousel-item"
           >
             <div class="row">
               <div class="col-sm-5">
@@ -49,17 +49,17 @@
               </div>
               <div class="col-sm-7">
                 <div class="d-flex h-100 flex-column carousel-post">
-                  <h1 class="h3 pt-1">{{ post.title }}</h1>
+                  <h1 class="h3 pt-3 pt-sm-1">{{ post.title }}</h1>
                   <p class="mb-auto">
                     {{ post.description }}
                   </p>
                   <div>
                     <NLink
-                      class="more-link"
                       :to="{
                         name: 'blog-blog',
                         params: { blog: post.slug }
                       }"
+                      class="more-link"
                     >
                       Bővebben
                     </NLink>
