@@ -110,8 +110,14 @@ export default {
       title: 'PHE project development & consulting - Kapcsolat'
     }
   },
-  mounted() {
-    this.isSuccess = location.hash === '#success'
+  created() {
+    if (process.client) {
+      console.log(location.hash)
+      this.isSuccess = location.hash === '#success'
+      setTimeout(() => {
+        location.hash = ''
+      }, 5000)
+    }
   }
 }
 </script>
