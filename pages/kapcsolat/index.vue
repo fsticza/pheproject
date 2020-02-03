@@ -9,29 +9,10 @@
     </div>
 
     <div class="actual-content">
-      <div class="row text-center">
-        <a
-          class="contact-link col-sm-4 my-1"
-          target="_blank"
-          href="https://goo.gl/maps/njg9EcpNG8JhFRjx6"
-        >
-          <MapIcon class="contact-link-icon" />
-          1096 Budapest, Tűzoltó utca 50. Manta Office
-        </a>
-        <a class="contact-link col-sm-4 my-1" href="mailto:info@pheproject.hu">
-          <EmailIcon class="contact-link-icon" />
-          info@pheproject.hu
-        </a>
-        <a class="contact-link col-sm-4 my-1" href="tel:+36705263135">
-          <PhoneIcon class="contact-link-icon" />
-          +3670 526 3135
-        </a>
-      </div>
-
       <div class="row my-4 align-items-center">
         <div class="col-md-6">
           <img
-            height="500"
+            height="540"
             class="img-cover"
             loading="lazy"
             src="/img/mantra-office-2.png"
@@ -39,6 +20,25 @@
           />
         </div>
         <div class="col-md-6">
+          <div class="contact-links">
+            <a
+              class="contact-link"
+              target="_blank"
+              href="https://goo.gl/maps/njg9EcpNG8JhFRjx6"
+            >
+              <MapIcon class="contact-link-icon" />
+              1096 Budapest, Tűzoltó utca 50. Manta Office
+            </a>
+            <a class="contact-link" href="mailto:info@pheproject.hu">
+              <EmailIcon class="contact-link-icon" />
+              info@pheproject.hu
+            </a>
+            <a class="contact-link" href="tel:+36705263135">
+              <PhoneIcon class="contact-link-icon" />
+              +3670 526 3135
+            </a>
+          </div>
+
           <form
             name="contact"
             class="my-4 contact-form"
@@ -47,7 +47,7 @@
             data-netlify="true"
             data-netlify-honeypot="bot-field"
           >
-            <div v-show="isSuccess" id="success" class="alert alert-success">
+            <div id="success" v-show="isSuccess" class="alert alert-success">
               Az üzenetet sikeresen megkaptuk, köszönjük!
             </div>
             <div class="form-group">
@@ -117,8 +117,18 @@ export default {
 </script>
 
 <style lang="scss">
+@import '~/assets/scss/variables';
+.contact-links {
+  @include media-breakpoint-up(xl) {
+    display: flex;
+    justify-content: space-between;
+  }
+}
 .contact-link {
   text-decoration: none;
+  display: block;
+  text-align: center;
+  margin: 1rem 0;
 }
 .contact-form {
   padding: 1.5rem;
