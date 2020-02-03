@@ -109,9 +109,6 @@ module.exports = {
         const basePath = `./assets/content/${kind}`
         const renamedFiles = fs.readdirSync(basePath).map((file) => {
           if (file.normalize('NFD').replace(/[\u0300-\u036F]/g, '') !== file) {
-            console.log('---')
-            console.log(file)
-            console.log(file.normalize('NFD').replace(/[\u0300-\u036F]/g, ''))
             const normalizedFileName = file
               .normalize('NFD')
               .replace(/[\u0300-\u036F]/g, '')
@@ -123,8 +120,10 @@ module.exports = {
 
             file = normalizedFileName
           }
+          console.log('---')
+          console.log(file.slice(0, -5))
           return {
-            route: `/${kind}/${file.slice(2, -5)}`, // Remove the .json from the end of the filename
+            route: `/${kind}/${file.slice(0, -5)}`, // Remove the .json from the end of the filename
             payload: require(`./assets/content/${kind}/${file}`)
           }
         })
