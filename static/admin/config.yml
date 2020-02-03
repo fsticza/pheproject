@@ -7,6 +7,10 @@ public_folder: /img
 
 logo_url: /img/PHE-logo.svg
 
+slug:
+  encoding: "ascii"
+  clean_accents: true
+
 collections:
   - name: 'blog'
     label: 'Blog'
