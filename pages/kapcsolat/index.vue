@@ -40,10 +40,11 @@
           </div>
 
           <form
+            @submit.prevent="onContactSubmit"
             name="contact"
             class="my-4 contact-form"
             method="POST"
-            action="/kapcsolat/?success=1"
+            action="/kapcsolat/"
             data-netlify="true"
             data-netlify-honeypot="bot-field"
           >
@@ -54,6 +55,7 @@
               <label for="form-name">Név:</label>
               <input
                 id="form-name"
+                v-model="name"
                 required
                 class="form-control"
                 type="text"
@@ -64,6 +66,7 @@
               <label for="form-email">Email:</label>
               <input
                 id="form-email"
+                v-model="email"
                 required
                 class="form-control"
                 type="email"
@@ -74,6 +77,7 @@
               <label for="form-message">Üzenet:</label>
               <textarea
                 id="form-message"
+                v-model="message"
                 required
                 class="form-control"
                 name="message"
@@ -102,7 +106,10 @@ export default {
   },
   data() {
     return {
-      isSuccess: false
+      isSuccess: false,
+      name: '',
+      email: '',
+      message: ''
     }
   },
   head() {
@@ -110,12 +117,16 @@ export default {
       title: 'PHE project development & consulting - Kapcsolat'
     }
   },
-  created() {
-    if (process.client) {
-      this.isSuccess = !!this.$route.query.success
-      setTimeout(() => {
-        this.isSuccess = false
-      }, 10000)
+  methods: {
+    onContactSubmit(ev) {
+      const formData = new FormData()
+      formData.append('name', this.name)
+      formData.append('email', this.email)
+      formData.append('message', this.message)
+      fetch(ev.target.action, {
+        method: 'POST',
+        body: formData
+      }).then(() => (this.isSuccess = true))
     }
   }
 }
