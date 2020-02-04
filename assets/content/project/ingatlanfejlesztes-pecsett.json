@@ -1,9 +1,13 @@
 {
-  "title": "Unifront apartman - Pécs ",
+  "title": "Unifront apartmanok",
   "location": "Pécs",
   "year": 2020,
   "tags": [
-    "RED"
+    "RED",
+    "IMPL",
+    "PM",
+    "TC",
+    "TS"
   ],
   "image": "/img/3D_2.jpg",
   "description": "Ingatlanfejlesztés - Pécs ",
