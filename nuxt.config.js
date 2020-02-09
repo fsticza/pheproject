@@ -122,6 +122,7 @@ module.exports = {
           }
           console.log('---')
           console.log(file.slice(0, -5))
+          console.log(`./assets/content/${kind}/${file}`)
           return {
             route: `/${kind}/${file.slice(0, -5)}`, // Remove the .json from the end of the filename
             payload: require(`./assets/content/${kind}/${file}`)

@@ -4,10 +4,10 @@
     <ul class="nav nav-pills nav-fill">
       <li v-for="tag in projectTags" :key="tag.value" class="nav-item">
         <a
-          class="nav-link project-nav-link"
           :class="projectFilter === tag.value ? 'active' : ''"
-          href="#"
           @click.prevent="setProjectFilter(tag.value)"
+          class="nav-link project-nav-link"
+          href="#"
           >{{ tag.label }}</a
         >
       </li>
@@ -23,20 +23,20 @@
         v-for="(project, idx) in filteredProjects"
         v-else
         :key="idx"
-        class="mt-4 col-sm-4"
         :class="idx === 0 ? 'active' : ''"
+        class="mt-4 col-sm-4"
       >
         <div class="img-canvas" style="height: 200px">
-          <img loading="lazy" :src="project.image" class="img" alt="..." />
+          <img :src="project.image" loading="lazy" class="img" alt="..." />
         </div>
         <h1 class="h3 pt-3">{{ project.title }}</h1>
         <p>{{ project.description }}</p>
         <NLink
-          class="more-link"
           :to="{
-            name: 'referenciak-project',
+            name: 'project-project',
             params: { project: project.slug }
           }"
+          class="more-link"
         >
           Bővebben
         </NLink>
