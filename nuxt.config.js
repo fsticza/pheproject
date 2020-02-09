@@ -105,7 +105,7 @@ module.exports = {
   generate: {
     routes() {
       const fs = require('fs')
-      return ['blog', 'project'].reduce((accu, kind) => {
+      return ['blog', 'projects'].reduce((accu, kind) => {
         const basePath = `./assets/content/${kind}`
         const renamedFiles = fs.readdirSync(basePath).map((file) => {
           if (file.normalize('NFD').replace(/[\u0300-\u036F]/g, '') !== file) {
@@ -120,8 +120,6 @@ module.exports = {
 
             file = normalizedFileName
           }
-          console.log('---')
-          console.log(file.slice(0, -5))
           console.log(`./assets/content/${kind}/${file}`)
           return {
             route: `/${kind}/${file.slice(0, -5)}`, // Remove the .json from the end of the filename

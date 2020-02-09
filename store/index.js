@@ -45,7 +45,7 @@ export const actions = {
     await commit('setBlogPosts', blogPosts)
 
     const projectFiles = await require.context(
-      '~/assets/content/project/',
+      '~/assets/content/projects/',
       false,
       /\.json$/
     )

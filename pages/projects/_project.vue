@@ -12,12 +12,12 @@
       <div class="row">
         <div class="col-sm-6">
           <div class="img-canvas" style="height: 400px">
-            <img class="img" loading="lazy" :src="project.image" alt="" />
+            <img :src="project.image" class="img" loading="lazy" alt="" />
           </div>
         </div>
         <div class="col-sm-6">
           <h1 class="h3 pt-3 mb-4">{{ project.title }}</h1>
-          <div class="text-justify" v-html="$md.render(project.body)" />
+          <div v-html="$md.render(project.body)" class="text-justify" />
         </div>
       </div>
 
@@ -37,12 +37,12 @@
           >
             <div class="img-canvas my-2" style="height: 200px">
               <img
+                :src="url"
+                @click="galleryIndex = imageIndex"
                 class="img"
                 style="cursor:pointer;"
                 loading="lazy"
-                :src="url"
                 alt=""
-                @click="galleryIndex = imageIndex"
               />
             </div>
           </div>
@@ -63,7 +63,7 @@ export default {
     if (payload) return { project: payload }
     else
       return {
-        project: await require(`~/assets/content/project/${params.project}.json`)
+        project: await require(`~/assets/content/projects/${params.project}.json`)
       }
   },
   head() {
