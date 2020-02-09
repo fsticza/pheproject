@@ -44,7 +44,7 @@
               <NLink
                 class="nav-item nav-link"
                 active-class="active"
-                to="/projects"
+                to="/referenciak"
                 >referenciák</NLink
               >
               <NLink

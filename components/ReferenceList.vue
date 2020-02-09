@@ -33,7 +33,7 @@
         <p>{{ project.description }}</p>
         <NLink
           :to="{
-            name: 'projects-project',
+            name: 'referenciak-project',
             params: { project: project.slug }
           }"
           class="more-link"

@@ -63,7 +63,7 @@ export default {
     if (payload) return { project: payload }
     else
       return {
-        project: await require(`~/assets/content/projects/${params.project}.json`)
+        project: await require(`~/assets/content/referenciak/${params.project}.json`)
       }
   },
   head() {
