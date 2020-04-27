@@ -31,10 +31,19 @@
               <div class="col-md-6">
                 <div class="img-canvas mt-3" style="height: 220px">
                   <img
-                    loading="lazy"
-                    :src="`${service.image}?nf_resize=fit&h=440`"
+                    :srcset="
+                      `
+                      ${service.image}?nf_resize=fit&w=520 1590w,
+                      ${service.image}?nf_resize=fit&w=350 1110w,
+                      ${service.image}?nf_resize=fit&w=290   930w,
+                      ${service.image}?nf_resize=fit&w=210   690w
+                      `
+                    "
+                    :src="`${service.image}?nf_resize=fit&w=520`"
+                    :alt="`${service.title} | PHE`"
                     class="img"
-                    alt="..."
+                    loading="lazy"
+                    sizes="(min-width: 1680px) 1590px, (min-width: 1200px) 1110px, (min-width: 992px) 930px, (min-width: 768px) 690px"
                   />
                 </div>
               </div>

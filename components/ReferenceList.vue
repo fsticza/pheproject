@@ -27,7 +27,21 @@
         class="mt-4 col-sm-4"
       >
         <div class="img-canvas" style="height: 200px">
-          <img :src="project.image" loading="lazy" class="img" alt="..." />
+          <img
+            :srcset="
+              `
+              ${project.image}?nf_resize=fit&w=520 1590w,
+              ${project.image}?nf_resize=fit&w=350 1110w,
+              ${project.image}?nf_resize=fit&w=290   930w,
+              ${project.image}?nf_resize=fit&w=210   690w
+              `
+            "
+            :src="`${project.image}?nf_resize=fit&w=520`"
+            :alt="`${project.title} | PHE`"
+            class="img"
+            loading="lazy"
+            sizes="(min-width: 1680px) 1590px, (min-width: 1200px) 1110px, (min-width: 992px) 930px, (min-width: 768px) 690px"
+          />
         </div>
         <h1 class="h3 pt-3">{{ project.title }}</h1>
         <p>{{ project.description }}</p>

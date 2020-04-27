@@ -10,7 +10,7 @@
           /img/index-head2.jpg?nf_resize=fit&w=690   690w
         "
         sizes="(min-width: 1680px) 1590px, (min-width: 1200px) 1110px, (min-width: 992px) 930px, (min-width: 768px) 690px"
-        src="/img/index-head2.jpg?nf_resize=fit&w=510"
+        src="/img/index-head2.jpg?nf_resize=fit&w=520"
         alt="PHE | Mérnöki megoldásoktól mindenkinek"
       />
       <h1 class="head__title">

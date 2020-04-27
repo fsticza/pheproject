@@ -1,7 +1,18 @@
 <template>
   <div>
     <div class="head-img head-img--small">
-      <img class="img" loading="lazy" src="/img/index-head2.jpg" alt="" />
+      <img
+        class="img"
+        srcset="
+          /img/index-head2.jpg?nf_resize=fit&w=1590 1590w,
+          /img/index-head2.jpg?nf_resize=fit&w=1110 1110w,
+          /img/index-head2.jpg?nf_resize=fit&w=930   930w,
+          /img/index-head2.jpg?nf_resize=fit&w=690   690w
+        "
+        sizes="(min-width: 1680px) 1590px, (min-width: 1200px) 1110px, (min-width: 992px) 930px, (min-width: 768px) 690px"
+        src="/img/index-head2.jpg?nf_resize=fit&w=520"
+        alt="PHE | Mérnöki megoldásoktól mindenkinek"
+      />
       <h1 class="head__title">
         <span class="first-line">mérnöki <strong>megoldások</strong></span>
         mindenki számára
@@ -19,7 +30,21 @@
           <div class="row">
             <div class="col-sm-4">
               <div class="img-canvas" style="height: 200px">
-                <img loading="lazy" :src="post.cover" class="img" alt="..." />
+                <img
+                  :srcset="
+                    `
+                    ${post.cover}?nf_resize=fit&w=520 1590w,
+                    ${post.cover}?nf_resize=fit&w=350 1110w,
+                    ${post.cover}?nf_resize=fit&w=290   930w,
+                    ${post.cover}?nf_resize=fit&w=210   690w
+                    `
+                  "
+                  :src="`${post.cover}?nf_resize=fit&w=520`"
+                  :alt="`${post.title} | PHE`"
+                  class="img"
+                  loading="lazy"
+                  sizes="(min-width: 1680px) 1590px, (min-width: 1200px) 1110px, (min-width: 992px) 930px, (min-width: 768px) 690px"
+                />
               </div>
             </div>
             <div class="col-sm-8">
