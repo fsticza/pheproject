@@ -7,25 +7,25 @@
           <ul class="nav flex-column service-nav">
             <li v-for="service in services" :key="service.tag" class="nav-item">
               <a
-                class="nav-link"
                 :class="serviceFilter === service.tag ? 'active' : ''"
-                href="#"
                 @click.prevent="setServiceFilter(service.tag)"
+                class="nav-link"
+                href="#"
               >
-                <img class="service-link-icon" :src="service.icon" />
+                <img :src="service.icon" class="service-link-icon" />
                 {{ service.title }}
               </a>
             </li>
           </ul>
         </nav>
       </div>
-      <div class="col-sm-8">
+      <div class="col-sm-8 overflow-hidden">
         <transition-group name="service" tag="div" class="service-wrapper">
           <article
             v-for="service in services"
             :key="service.tag"
-            class="service-item"
             :class="serviceFilter === service.tag ? 'active' : ''"
+            class="service-item"
           >
             <div class="row">
               <div class="col-md-6">
@@ -55,8 +55,8 @@
                   </div>
                   <NLink
                     v-if="!isExtended"
-                    class="more-link mt-2 mb-md-2"
                     :to="{ path: '/szolgaltatasok', hash: `#${service.tag}` }"
+                    class="more-link mt-2 mb-md-2"
                   >
                     Bővebben
                   </NLink>
@@ -65,8 +65,8 @@
             </div>
             <div
               v-if="isExtended"
-              class="mt-4 text-justify"
               v-html="service.body"
+              class="mt-4 text-justify"
             ></div>
           </article>
         </transition-group>
