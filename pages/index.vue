@@ -1,7 +1,13 @@
 <template>
   <div>
     <div class="head-img">
-      <img class="img" loading="lazy" src="/img/index-head2.jpg" alt="" />
+      <img
+        class="img"
+        srcset="/img/index-head2.jpg 480w, /img/index-head2.jpg 800w"
+        sizes="(max-width: 600px) 480px, 800px"
+        src="/img/index-head2.jpg"
+        alt="PHE | Mérnöki megoldásoktól mindenkinek"
+      />
       <h1 class="head__title">
         <span class="first-line">mérnöki <strong>megoldások</strong></span>
         mindenki számára

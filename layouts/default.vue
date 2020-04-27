@@ -1,7 +1,7 @@
 <template>
   <div class="default-layout">
     <div class="main-padder">
-      <header class="container-fluid">
+      <header class="container">
         <b-navbar class="main-navbar" toggleable="lg" type="light">
           <b-navbar-brand href="/">
             <img
@@ -85,7 +85,7 @@
         </b-navbar>
       </header>
       <div class="main-content">
-        <div class="container-fluid">
+        <div class="container">
           <nuxt />
         </div>
       </div>
@@ -417,7 +417,6 @@ body {
   flex-direction: column;
 }
 .main-padder {
-  margin: 0 5%;
   display: flex;
   flex-direction: column;
   flex: 1;

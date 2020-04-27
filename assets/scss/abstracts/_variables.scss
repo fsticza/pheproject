@@ -7,6 +7,23 @@ $secondary: #123541;
 $dark: $body-color;
 $enable-rounded: false;
 
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1680px,
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1620px,
+) !default;
+
 $link-decoration: underline;
 $link-color: $primary;
 
