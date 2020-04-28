@@ -51,10 +51,19 @@
               <div class="col-sm-5">
                 <div class="img-canvas carousel-img-wrapper">
                   <img
-                    :src="post.cover"
-                    loading="lazy"
+                    :srcset="
+                      `
+                      ${post.cover}?nf_resize=fit&w=645 1590w,
+                      ${post.cover}?nf_resize=fit&w=445 1110w,
+                      ${post.cover}?nf_resize=fit&w=370   930w,
+                      ${post.cover}?nf_resize=fit&w=270   690w
+                      `
+                    "
+                    :src="`${post.cover}?nf_resize=fit&w=520`"
+                    :alt="`${post.title} | PHE`"
                     class="carousel-img img"
-                    alt="..."
+                    loading="lazy"
+                    sizes="(min-width: 1680px) 1590px, (min-width: 1200px) 1110px, (min-width: 992px) 930px, (min-width: 768px) 690px"
                   />
                 </div>
               </div>
