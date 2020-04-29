@@ -24,8 +24,8 @@
         <article
           v-for="(post, idx) in blogPosts"
           :key="idx"
-          class="my-4"
           :class="idx === 0 ? 'active' : ''"
+          class="my-4"
         >
           <div class="row">
             <div class="col-sm-4">
@@ -54,8 +54,8 @@
                   {{ post.description }}
                 </p>
                 <NLink
-                  class="more-link mt-2 mb-md-2"
                   :to="{ name: 'blog-blog', params: { blog: post.slug } }"
+                  class="more-link mt-2 mb-md-2"
                 >
                   Bővebben
                 </NLink>

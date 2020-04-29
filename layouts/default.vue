@@ -90,20 +90,15 @@
         </div>
       </div>
     </div>
-    <GmapMap
-      ref="gMap"
-      :center="{ lat: 47.4817237, lng: 19.0761946 }"
-      :zoom="15"
-      :options="options"
-      style="height: 20vh"
-    >
-      <GmapMarker
-        :position="{ lat: 47.4817237, lng: 19.0761946 }"
-        :icon="{
-          url: '/img/phe-maps-icon.png'
-        }"
+    <div class="img-canvas" style="height: 300px">
+      <img
+        :src="
+          `https://maps.googleapis.com/maps/api/staticmap?size=640x640&scale=2&zoom=15&center=47.4817237,19.076194&6&markers=scale:2|icon:https://pheproject.hu/img/phe-maps-icon.png|47.4817237,19.0761946${customStyleUrlParam}&key=AIzaSyC_Eeaamw6wazOwmjVm8W70nuOHAU30is4`
+        "
+        class="img"
       />
-    </GmapMap>
+    </div>
+
     <footer class="main-footer">
       <div class="container">
         <div class="row">
@@ -348,16 +343,33 @@ export default {
       options
     }
   },
+  computed: {
+    customStyleUrlParam() {
+      return customStyle.reduce((accu, style) => {
+        accu += '&style='
+        if (style.featureType) {
+          accu += `feature:${style.featureType}`
+          if (style.elementType) {
+            accu += '|'
+          }
+        }
+        if (style.elementType) {
+          accu += `element:${style.elementType}|`
+        }
+        style.stylers.forEach((styler) => {
+          accu += Object.entries(styler)
+            .map(([key, value]) => {
+              return `${key}:${value.replace('#', '0x')}`
+            })
+            .join('|')
+        })
+        return accu
+      }, '')
+    }
+  },
   asyncData(context) {
     return {
       options
-    }
-  },
-  mounted() {
-    this.$refs.gMap.$el.style.width = `${document.body.clientWidth}px`
-
-    window.onresize = () => {
-      this.$refs.gMap.$el.style.width = `${document.body.clientWidth}px`
     }
   }
 }

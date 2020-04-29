@@ -24,8 +24,7 @@
     "koa": "^2.11.0",
     "nuxt": "^2.11.0",
     "vue": "^2.6.11",
-    "vue-light-gallery": "^1.0.1",
-    "vue2-google-maps": "^0.10.7"
+    "vue-light-gallery": "^1.0.1"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^1.0.1",
