@@ -93,8 +93,9 @@
     <div class="img-canvas" style="height: 300px">
       <img
         :src="
-          `https://maps.googleapis.com/maps/api/staticmap?size=640x640&scale=2&zoom=15&center=47.4817237,19.076194&6&markers=scale:2|icon:https://pheproject.hu/img/phe-maps-icon.png|47.4817237,19.0761946${customStyleUrlParam}&key=AIzaSyC_Eeaamw6wazOwmjVm8W70nuOHAU30is4`
+          `https://maps.googleapis.com/maps/api/staticmap?size=640x300&scale=2&zoom=15&center=47.4817237,19.076194&6&markers=scale:2|icon:https://pheproject.hu/img/phe-maps-icon.png|47.4817237,19.0761946${customStyleUrlParam}&key=AIzaSyC_Eeaamw6wazOwmjVm8W70nuOHAU30is4`
         "
+        loading="lazy"
         class="img"
       />
     </div>
