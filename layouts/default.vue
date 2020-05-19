@@ -112,7 +112,12 @@
       target="_blank"
       href="https://goo.gl/maps/njg9EcpNG8JhFRjx6"
     >
-      <img src="~assets/img/maps.png" loading="lazy" class="img" />
+      <img
+        src="~assets/img/maps.png"
+        style="height: 200px"
+        loading="lazy"
+        class="img"
+      />
     </a>
 
     <footer class="main-footer">
