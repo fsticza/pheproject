@@ -33,7 +33,7 @@
                   <img
                     :srcset="
                       `
-                      ${service.image}?nf_resize=fit&w=520 1590w,
+                      ${service.image}?nf_resize=fit&w=520 1650w,
                       ${service.image}?nf_resize=fit&w=350 1110w,
                       ${service.image}?nf_resize=fit&w=290   930w,
                       ${service.image}?nf_resize=fit&w=210   690w
@@ -43,7 +43,7 @@
                     :alt="`${service.title} | PHE`"
                     class="img"
                     loading="lazy"
-                    sizes="(min-width: 1680px) 1590px, (min-width: 1200px) 1110px, (min-width: 992px) 930px, (min-width: 768px) 690px"
+                    sizes="(min-width: 1680px) 1650px, (min-width: 1200px) 1110px, (min-width: 992px) 930px, (min-width: 768px) 690px"
                   />
                 </div>
               </div>

@@ -2,7 +2,7 @@
 $font-family-sans-serif: 'Open Sans', sans-serif;
 // $font-family-monospace: "Roboto Mono", Consolas, monospace;
 $body-color: #353637;
-$primary: #8B9DB5;
+$primary: #8b9db5;
 $secondary: #123541;
 $dark: $body-color;
 $enable-rounded: false;
@@ -13,7 +13,7 @@ $grid-breakpoints: (
   md: 768px,
   lg: 992px,
   xl: 1200px,
-  xxl: 1680px,
+  xxl: 1740px
 );
 
 $container-max-widths: (
@@ -21,7 +21,7 @@ $container-max-widths: (
   md: 720px,
   lg: 960px,
   xl: 1140px,
-  xxl: 1620px,
+  xxl: 1680px
 ) !default;
 
 $link-decoration: underline;
@@ -30,6 +30,6 @@ $link-color: $primary;
 $carousel-control-color: $primary;
 $carousel-indicator-active-bg: $body-color;
 
-@import "./node_modules/bootstrap/scss/functions";
-@import "./node_modules/bootstrap/scss/variables";
-@import "./node_modules/bootstrap/scss/mixins";
+@import './node_modules/bootstrap/scss/functions';
+@import './node_modules/bootstrap/scss/variables';
+@import './node_modules/bootstrap/scss/mixins';

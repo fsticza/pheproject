@@ -24,7 +24,8 @@
     "koa": "^2.11.0",
     "nuxt": "^2.11.0",
     "vue": "^2.6.11",
-    "vue-light-gallery": "^1.0.1"
+    "vue-light-gallery": "^1.0.1",
+    "vue2-google-maps": "^0.10.7"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^1.0.1",
@@ -39,9 +40,10 @@
     "eslint-plugin-nuxt": "^0.5.0",
     "eslint-plugin-prettier": "^3.1.2",
     "imagemin": "^6.0.0",
+    "imagemin-jpegtran": "^6.0.0",
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-pngquant": "^6.0.0",
-    "node-sass": "^4.13.1",
+    "node-sass": "^4.14.1",
     "nodemon": "^1.19.4",
     "prettier": "^1.19.1",
     "require-extension-hooks": "^0.3.3",

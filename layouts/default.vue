@@ -90,15 +90,30 @@
         </div>
       </div>
     </div>
-    <div class="img-canvas" style="height: 300px">
-      <img
-        :src="
-          `https://maps.googleapis.com/maps/api/staticmap?size=640x300&scale=2&zoom=15&center=47.4817237,19.076194&6&markers=scale:2|icon:https://pheproject.hu/img/phe-maps-icon.png|47.4817237,19.0761946${customStyleUrlParam}&key=AIzaSyC_Eeaamw6wazOwmjVm8W70nuOHAU30is4`
-        "
-        loading="lazy"
-        class="img"
+
+    <!-- <GmapMap
+      ref="gMap"
+      :center="{ lat: 47.4817237, lng: 19.0761946 }"
+      :zoom="15"
+      :options="options"
+      style="height: 200px"
+    >
+      <GmapMarker
+        :position="{ lat: 47.4817237, lng: 19.0761946 }"
+        :icon="{
+          url: '/img/phe-maps-icon.png'
+        }"
       />
-    </div>
+    </GmapMap> -->
+
+    <a
+      class="img-canvas d-block"
+      style="height: 200px"
+      target="_blank"
+      href="https://goo.gl/maps/njg9EcpNG8JhFRjx6"
+    >
+      <img src="~assets/img/maps.png" loading="lazy" class="img" />
+    </a>
 
     <footer class="main-footer">
       <div class="container">
@@ -327,9 +342,9 @@ const options = {
   zoomControl: false,
   mapTypeControl: false,
   scaleControl: false,
-  streetViewControl: true,
+  streetViewControl: false,
   rotateControl: false,
-  fullscreenControl: true,
+  fullscreenControl: false,
   styles: customStyle
 }
 

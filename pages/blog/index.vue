@@ -4,12 +4,12 @@
       <img
         class="img"
         srcset="
-          /img/index-head2.jpg?nf_resize=fit&w=1590 1590w,
+          /img/index-head2.jpg?nf_resize=fit&w=1590 1650w,
           /img/index-head2.jpg?nf_resize=fit&w=1110 1110w,
           /img/index-head2.jpg?nf_resize=fit&w=930   930w,
           /img/index-head2.jpg?nf_resize=fit&w=690   690w
         "
-        sizes="(min-width: 1680px) 1590px, (min-width: 1200px) 1110px, (min-width: 992px) 930px, (min-width: 768px) 690px"
+        sizes="(min-width: 1680px) 1650px, (min-width: 1200px) 1110px, (min-width: 992px) 930px, (min-width: 768px) 690px"
         src="/img/index-head2.jpg?nf_resize=fit&w=520"
         alt="PHE | Mérnöki megoldásoktól mindenkinek"
       />
@@ -33,7 +33,7 @@
                 <img
                   :srcset="
                     `
-                    ${post.cover}?nf_resize=fit&w=520 1590w,
+                    ${post.cover}?nf_resize=fit&w=520 1650w,
                     ${post.cover}?nf_resize=fit&w=350 1110w,
                     ${post.cover}?nf_resize=fit&w=290   930w,
                     ${post.cover}?nf_resize=fit&w=210   690w
@@ -43,7 +43,7 @@
                   :alt="`${post.title} | PHE`"
                   class="img"
                   loading="lazy"
-                  sizes="(min-width: 1680px) 1590px, (min-width: 1200px) 1110px, (min-width: 992px) 930px, (min-width: 768px) 690px"
+                  sizes="(min-width: 1680px) 1650px, (min-width: 1200px) 1110px, (min-width: 992px) 930px, (min-width: 768px) 690px"
                 />
               </div>
             </div>
