@@ -6,7 +6,7 @@ let files
 ;(async () => {
   files = await imagemin(['static/img/*.{jpg,png}'], 'static/img', {
     plugins: [
-      imageminMozjpeg({ quality: 65, progressive: true }),
+      imageminMozjpeg({ quality: 65 }),
       imageminPngquant({ quality: '65-80' })
     ]
   })
