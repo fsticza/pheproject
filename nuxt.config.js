@@ -49,7 +49,6 @@ module.exports = {
    ** Customize the progress-bar color
    */
   router: {
-    // base: process.env.DEPLOY_ENV === 'GH_PAGES' ? '/sticza.com/' : '',
     linkExactActiveClass: 'active',
     linkActiveClass: ''
   },
