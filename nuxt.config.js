@@ -99,7 +99,7 @@ module.exports = {
      */
     extend(config, ctx) {
       if (!ctx.isDev) {
-        config.publicPath = 'https://d1loboc6rox52k.cloudfront.net'
+        config.output.publicPath = 'https://d1loboc6rox52k.cloudfront.net'
       }
     }
   },
