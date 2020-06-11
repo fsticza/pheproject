@@ -97,7 +97,11 @@ module.exports = {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    extend(config, ctx) {
+      if (!ctx.isDev) {
+        config.publicPath = 'https://d1loboc6rox52k.cloudfront.net'
+      }
+    }
   },
   markdownit: {
     injected: true
