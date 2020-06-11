@@ -2,20 +2,21 @@
   <div>
     <div class="head-img">
       <img
-        class="img"
-        srcset="
-          /img/index-head2.jpg?nf_resize=fit&w=1590 1650w,
-          /img/index-head2.jpg?nf_resize=fit&w=1110 1110w,
-          /img/index-head2.jpg?nf_resize=fit&w=930   930w,
-          /img/index-head2.jpg?nf_resize=fit&w=690   690w
+        :srcset="
+          `${imgPath}/img/index-head2.jpg?nf_resize=fit&w=1590 1650w,
+          ${imgPath}/img/index-head2.jpg?nf_resize=fit&w=1110 1110w,
+          ${imgPath}/img/index-head2.jpg?nf_resize=fit&w=930   930w,
+          ${imgPath}/img/index-head2.jpg?nf_resize=fit&w=690   690w
+        `
         "
+        :src="`${imgPath}/img/index-head2.jpg?nf_resize=fit&w=520`"
+        class="img"
         sizes="(min-width: 1680px) 1650px, (min-width: 1200px) 1110px, (min-width: 992px) 930px, (min-width: 768px) 690px"
-        src="/img/index-head2.jpg?nf_resize=fit&w=520"
         alt="PHE | Mérnöki megoldásoktól mindenkinek"
       />
       <h1 class="head__title">
         <span class="first-line">mérnöki <strong>megoldások</strong></span>
-        mindenki számára
+        mindenki számára {{ imgPath }}
       </h1>
     </div>
 
@@ -53,13 +54,13 @@
                   <img
                     :srcset="
                       `
-                      ${post.cover}?nf_resize=fit&w=645 1650w,
-                      ${post.cover}?nf_resize=fit&w=445 1110w,
-                      ${post.cover}?nf_resize=fit&w=370   930w,
-                      ${post.cover}?nf_resize=fit&w=270   690w
+                      ${imgPath}${post.cover}?nf_resize=fit&w=645 1650w,
+                      ${imgPath}${post.cover}?nf_resize=fit&w=445 1110w,
+                      ${imgPath}${post.cover}?nf_resize=fit&w=370   930w,
+                      ${imgPath}${post.cover}?nf_resize=fit&w=270   690w
                       `
                     "
-                    :src="`${post.cover}?nf_resize=fit&w=520`"
+                    :src="`${imgPath}${post.cover}?nf_resize=fit&w=520`"
                     :alt="`${post.title} | PHE`"
                     class="carousel-img img"
                     loading="lazy"
@@ -111,6 +112,10 @@ export default {
   },
   data() {
     return {
+      imgPath:
+        process.env.NODE_ENV === 'development'
+          ? ''
+          : 'https://d1loboc6rox52k.cloudfront.net',
       activeCarouselIndex: 0,
       carouselInterval: null
     }

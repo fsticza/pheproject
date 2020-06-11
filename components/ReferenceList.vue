@@ -30,13 +30,13 @@
           <img
             :srcset="
               `
-              ${project.image}?nf_resize=fit&w=520 1650w,
-              ${project.image}?nf_resize=fit&w=350 1110w,
-              ${project.image}?nf_resize=fit&w=290   930w,
-              ${project.image}?nf_resize=fit&w=210   690w
+              ${imgPath}${project.image}?nf_resize=fit&w=520 1650w,
+              ${imgPath}${project.image}?nf_resize=fit&w=350 1110w,
+              ${imgPath}${project.image}?nf_resize=fit&w=290   930w,
+              ${imgPath}${project.image}?nf_resize=fit&w=210   690w
               `
             "
-            :src="`${project.image}?nf_resize=fit&w=520`"
+            :src="`${imgPath}${project.image}?nf_resize=fit&w=520`"
             :alt="`${project.title} | PHE`"
             class="img"
             loading="lazy"
@@ -70,6 +70,10 @@ export default {
   },
   data() {
     return {
+      imgPath:
+        process.env.NODE_ENV === 'development'
+          ? ''
+          : 'https://d1loboc6rox52k.cloudfront.net',
       projectFilter: 'ALL'
     }
   },
