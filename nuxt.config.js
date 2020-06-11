@@ -94,12 +94,12 @@ module.exports = {
    ** Build configuration
    */
   build: {
+    publicPath: 'https://d1loboc6rox52k.cloudfront.net/',
     /*
      ** You can extend webpack config here
      */
     extend(config, ctx) {
       if (!ctx.isDev) {
-        config.output.publicPath = 'https://d1loboc6rox52k.cloudfront.net'
       }
     }
   },
@@ -107,6 +107,7 @@ module.exports = {
     injected: true
   },
   generate: {
+    fallback: true,
     routes() {
       const fs = require('fs')
       return ['blog', 'referenciak'].reduce((accu, kind) => {
