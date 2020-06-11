@@ -16,7 +16,7 @@
       />
       <h1 class="head__title">
         <span class="first-line">mérnöki <strong>megoldások</strong></span>
-        mindenki számára {{ imgPath }}
+        mindenki számára
       </h1>
     </div>
 
