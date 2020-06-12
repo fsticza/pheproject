@@ -93,7 +93,7 @@ module.exports = {
    ** Build configuration
    */
   build: {
-    publicPath: 'https://d1loboc6rox52k.cloudfront.net',
+    // publicPath: 'https://d1loboc6rox52k.cloudfront.net',
     /*
      ** You can extend webpack config here
      */
