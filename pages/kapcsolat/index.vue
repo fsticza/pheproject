@@ -1,20 +1,7 @@
 <template>
   <div>
     <div class="head-img head-img--small">
-      <img
-        :srcset="
-          `
-          ${imgPath}/img/index-head2.jpg?nf_resize=fit&w=1590 1650w,
-          ${imgPath}/img/index-head2.jpg?nf_resize=fit&w=1110 1110w,
-          ${imgPath}/img/index-head2.jpg?nf_resize=fit&w=930   930w,
-          ${imgPath}/img/index-head2.jpg?nf_resize=fit&w=690   690w
-        `
-        "
-        :src="`${imgPath}/img/index-head2.jpg?nf_resize=fit&w=520`"
-        class="img"
-        sizes="(min-width: 1680px) 1650px, (min-width: 1200px) 1110px, (min-width: 992px) 930px, (min-width: 768px) 690px"
-        alt="PHE | Mérnöki megoldásoktól mindenkinek"
-      />
+      <HeadImg />
       <h1 class="head__title">
         <span class="first-line">mérnöki <strong>megoldások</strong></span>
         mindenki számára
@@ -25,10 +12,10 @@
       <div class="row my-4 align-items-center">
         <div class="col-md-6">
           <img
+            :src="`${imgPath}/img/mantra-office-2.png`"
             height="540"
             class="img-cover"
             loading="lazy"
-            src="/img/mantra-office-2.png"
             alt=""
           />
         </div>
@@ -108,12 +95,14 @@
 </template>
 
 <script>
+import HeadImg from '../../components/HeadImg'
 import MapIcon from '~/assets/img/map-icon.svg?inline'
 import EmailIcon from '~/assets/img/email-icon.svg?inline'
 import PhoneIcon from '~/assets/img/phone-icon.svg?inline'
 
 export default {
   components: {
+    HeadImg,
     MapIcon,
     EmailIcon,
     PhoneIcon
@@ -122,7 +111,7 @@ export default {
     return {
       imgPath:
         process.env.NODE_ENV === 'development'
-          ? ''
+          ? 'https://d1loboc6rox52k.cloudfront.net'
           : 'https://d1loboc6rox52k.cloudfront.net',
       isSuccess: false,
       name: '',

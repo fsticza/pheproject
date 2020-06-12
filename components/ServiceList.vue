@@ -33,17 +33,15 @@
                   <img
                     :srcset="
                       `
-                      ${imgPath}${service.image}?nf_resize=fit&w=520 1650w,
-                      ${imgPath}${service.image}?nf_resize=fit&w=350 1110w,
-                      ${imgPath}${service.image}?nf_resize=fit&w=290   930w,
-                      ${imgPath}${service.image}?nf_resize=fit&w=210   690w
+                      ${imgPath}${service.image}?nf_resize=fit&w=530 1650w,
+                      ${imgPath}${service.image}?nf_resize=fit&w=350   690w
                       `
                     "
-                    :src="`${imgPath}${service.image}?nf_resize=fit&w=520`"
+                    :src="`${imgPath}${service.image}?nf_resize=fit&w=530`"
                     :alt="`${service.title} | PHE`"
                     class="img"
                     loading="lazy"
-                    sizes="(min-width: 1680px) 1650px, (min-width: 1200px) 1110px, (min-width: 992px) 930px, (min-width: 768px) 690px"
+                    sizes="(min-width: 1680px) 1650px, (min-width: 768px) 690px"
                   />
                 </div>
               </div>
@@ -88,7 +86,7 @@ export default {
     return {
       imgPath:
         process.env.NODE_ENV === 'development'
-          ? ''
+          ? 'https://d1loboc6rox52k.cloudfront.net'
           : 'https://d1loboc6rox52k.cloudfront.net',
       serviceFilter: 'IMPL'
     }

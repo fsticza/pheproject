@@ -1,20 +1,7 @@
 <template>
   <article>
     <div class="head-img head-img--small">
-      <img
-        :srcset="
-          `
-          ${imgPath}/img/index-head2.jpg?nf_resize=fit&w=1590 1650w,
-          ${imgPath}/img/index-head2.jpg?nf_resize=fit&w=1110 1110w,
-          ${imgPath}/img/index-head2.jpg?nf_resize=fit&w=930   930w,
-          ${imgPath}/img/index-head2.jpg?nf_resize=fit&w=690   690w
-        `
-        "
-        :src="`${imgPath}/img/index-head2.jpg?nf_resize=fit&w=520`"
-        class="img"
-        sizes="(min-width: 1680px) 1650px, (min-width: 1200px) 1110px, (min-width: 992px) 930px, (min-width: 768px) 690px"
-        alt="PHE | Mérnöki megoldásoktól mindenkinek"
-      />
+      <HeadImg />
       <h1 class="head__title">
         <span class="first-line">mérnöki <strong>megoldások</strong></span>
         mindenki számára
@@ -30,11 +17,11 @@
                 `
                 ${imgPath}${project.image}?nf_resize=fit&w=780 1650w,
                 ${imgPath}${project.image}?nf_resize=fit&w=540 1110w,
-                ${imgPath}${project.image}?nf_resize=fit&w=450   930w,
-                ${imgPath}${project.image}?nf_resize=fit&w=240   690w
+                ${imgPath}${project.image}?nf_resize=fit&w=450  930w,
+                ${imgPath}${project.image}?nf_resize=fit&w=240  690w
                 `
               "
-              :src="`${imgPath}${project.image}?nf_resize=fit&w=520`"
+              :src="`${imgPath}${project.image}?nf_resize=fit&w=540`"
               :alt="`${project.title} | PHE`"
               class="img"
               loading="lazy"
@@ -66,10 +53,7 @@
               <img
                 :srcset="
                   `
-                  ${imgPath}${url}?nf_resize=fit&w=240 1650w,
-                  ${imgPath}${url}?nf_resize=fit&w=200 1110w,
-                  ${imgPath}${url}?nf_resize=fit&w=200   930w,
-                  ${imgPath}${url}?nf_resize=fit&w=240   690w
+                  ${imgPath}${url}?nf_resize=fit&w=240 690w
                   `
                 "
                 :src="`${imgPath}${url}?nf_resize=fit&w=520`"
@@ -78,6 +62,7 @@
                 class="img"
                 style="cursor:pointer;"
                 loading="lazy"
+                sizes="(min-width: 768px) 690px"
               />
             </div>
           </div>
@@ -86,14 +71,19 @@
     </div>
   </article>
 </template>
+
 <script>
+import HeadImg from '../../components/HeadImg'
+
 export default {
-  components: {},
+  components: {
+    HeadImg
+  },
   data() {
     return {
       imgPath:
         process.env.NODE_ENV === 'development'
-          ? ''
+          ? 'https://d1loboc6rox52k.cloudfront.net'
           : 'https://d1loboc6rox52k.cloudfront.net',
       galleryIndex: null
     }
