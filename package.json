@@ -23,6 +23,7 @@
     "cross-env": "^5.2.0",
     "koa": "^2.11.0",
     "nuxt": "^2.11.0",
+    "sass": "^1.62.1",
     "vue": "^2.6.11",
     "vue-light-gallery": "^1.0.1",
     "vue2-google-maps": "^0.10.7"
@@ -43,7 +44,6 @@
     "imagemin-jpegtran": "^6.0.0",
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-pngquant": "^6.0.0",
-    "node-sass": "^4.14.1",
     "nodemon": "^1.19.4",
     "prettier": "^1.19.1",
     "require-extension-hooks": "^0.3.3",
