@@ -26,7 +26,7 @@
     "bootstrap-vue": "^2.3.0",
     "cross-env": "^5.2.0",
     "koa": "^2.11.0",
-    "nuxt": "^2.11.0",
+    "nuxt": "^3.4.3",
     "sass": "^1.62.1",
     "vue": "^2.6.11",
     "vue-light-gallery": "^1.0.1",
