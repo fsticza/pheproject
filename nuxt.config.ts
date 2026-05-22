@@ -1,7 +1,40 @@
 import { defineNuxtConfig } from 'nuxt/config'
+import { existsSync, readdirSync } from 'node:fs'
+import { resolve } from 'node:path'
 
 function getContentRoutes() {
-  return []
+  const routes = new Set([
+    '/',
+    '/blog',
+    '/kapcsolat',
+    '/referenciak',
+    '/rolunk',
+    '/szolgaltatasok'
+  ])
+
+  const contentRoot = resolve(process.cwd(), 'assets/content')
+  const dynamicRouteMap = [
+    { kind: 'blog', basePath: '/blog' },
+    { kind: 'referenciak', basePath: '/referenciak' }
+  ]
+
+  for (const { kind, basePath } of dynamicRouteMap) {
+    const kindDir = resolve(contentRoot, kind)
+
+    if (!existsSync(kindDir)) {
+      continue
+    }
+
+    const slugs = readdirSync(kindDir)
+      .filter((fileName) => fileName.endsWith('.json'))
+      .map((fileName) => fileName.replace(/\.json$/, ''))
+
+    for (const slug of slugs) {
+      routes.add(`${basePath}/${slug}`)
+    }
+  }
+
+  return Array.from(routes)
 }
 
 const nitroPreset =
@@ -64,7 +97,7 @@ export default defineNuxtConfig({
     preset: nitroPreset,
     compatibilityDate: '2026-05-21',
     prerender: {
-      crawlLinks: false,
+      crawlLinks: true,
       failOnError: false,
       routes: contentRoutes
     }
