@@ -14,7 +14,7 @@
     "imagemin": "node ./imagemin.js",
     "prestart": "node ./scripts/ensure-production-output.mjs",
     "start": "nuxi preview",
-    "generate": "nuxi generate && rm -rf build && mkdir -p build && cp -R .output/public/. build/",
+    "generate": "nuxi generate && rm -rf build && mkdir -p build && { [ -d .output/public ] && cp -R .output/public/. build/ || [ -d dist ] && cp -R dist/. build/; }",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "test": "ava",
     "smoke:routes": "node ./scripts/smoke-routes.mjs",
