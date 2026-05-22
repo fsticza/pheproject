@@ -145,9 +145,9 @@
 
     <footer class="main-footer">
       <div class="container">
-        <div class="row">
+        <div class="footer-row">
           <a
-            class="footer-link col-sm-4 my-1"
+            class="footer-link footer-item"
             target="_blank"
             href="https://goo.gl/maps/njg9EcpNG8JhFRjx6"
           >
@@ -157,22 +157,25 @@
             ></span>
             1096 Budapest, Tűzoltó utca 50. Manta Office
           </a>
-          <a class="footer-link col-sm-3 my-1" href="mailto:info@pheproject.hu">
+          <a class="footer-link footer-item" href="mailto:info@pheproject.hu">
             <span
               class="footer-link-icon icon-mask icon-mask--email"
               aria-hidden="true"
             ></span>
             info@pheproject.hu
           </a>
-          <a class="footer-link col-sm-2 my-1" href="tel:+36705263135">
+          <a class="footer-link footer-item" href="tel:+36705263135">
             <span
               class="footer-link-icon icon-mask icon-mask--phone"
               aria-hidden="true"
             ></span>
             +3670 526 3135
           </a>
+          <NuxtLink class="footer-link footer-item" to="/adatvedelmi-tajekoztato">
+            Adatvédelmi tájékoztató
+          </NuxtLink>
           <a
-            class="ml-auto text-center text-sm-right col-sm-3 my-1"
+            class="footer-link footer-item footer-item--icon"
             href="https://www.facebook.com/pheproject.hu/"
             target="_blank"
             aria-label="Facebook"
@@ -289,18 +292,44 @@ body {
   color: #fff;
   padding: 30px 0;
 }
+.footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.25rem;
+  flex-wrap: wrap;
+}
 .footer-link {
   color: #fff;
   text-decoration: none;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   font-size: 0.875rem;
 
   &:hover {
     color: #fff;
   }
 }
+.footer-item {
+  flex: 1 1 auto;
+}
+.footer-item--icon {
+  justify-content: center;
+  flex: 0 0 auto;
+  color: #fff;
+
+  .footer-link-icon {
+    margin-right: 0;
+  }
+}
 .footer-link-icon {
   margin-right: 5px;
+}
+
+@include media-breakpoint-down(sm) {
+  .footer-row {
+    justify-content: center;
+  }
 }
 
 .icon-mask {

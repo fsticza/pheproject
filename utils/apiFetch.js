@@ -14,6 +14,77 @@ const parseContentEndpoint = (endpoint) => {
   }
 }
 
+const bundledContentModules = import.meta.glob('../assets/content/*/*.json', {
+  eager: true
+})
+
+let bundledContentIndex = null
+
+const buildBundledContentIndex = () => {
+  if (bundledContentIndex) {
+    return bundledContentIndex
+  }
+
+  const index = {}
+
+  for (const [modulePath, moduleValue] of Object.entries(
+    bundledContentModules
+  )) {
+    const match = modulePath.match(/\/assets\/content\/([^/]+)\/([^/]+)\.json$/)
+
+    if (!match) {
+      continue
+    }
+
+    const [, kind, slug] = match
+    const payload =
+      moduleValue && moduleValue.default ? moduleValue.default : moduleValue
+
+    if (!index[kind]) {
+      index[kind] = []
+    }
+
+    index[kind].push({
+      ...payload,
+      slug
+    })
+  }
+
+  for (const [kind, items] of Object.entries(index)) {
+    if (kind === 'blog') {
+      items.sort((a, b) => {
+        const aDate = new Date(String(a.date)).getTime()
+        const bDate = new Date(String(b.date)).getTime()
+        return bDate - aDate
+      })
+    }
+  }
+
+  bundledContentIndex = index
+  return bundledContentIndex
+}
+
+const loadBundledContent = (endpoint) => {
+  const parsed = parseContentEndpoint(endpoint)
+
+  if (!parsed) {
+    return null
+  }
+
+  const index = buildBundledContentIndex()
+  const items = index[parsed.kind]
+
+  if (!items) {
+    return null
+  }
+
+  if (parsed.slug) {
+    return items.find((item) => item.slug === parsed.slug) || null
+  }
+
+  return items
+}
+
 const loadContentLocally = async (endpoint) => {
   const parsed = parseContentEndpoint(endpoint)
 
@@ -80,6 +151,12 @@ export async function fetchApiJson(endpoint, req) {
   const isDevelopment = process.env.NODE_ENV === 'development'
   const isBrowser = typeof window !== 'undefined'
   const isServerRuntime = !isBrowser
+
+  const bundledContent = loadBundledContent(endpoint)
+
+  if (bundledContent !== null) {
+    return bundledContent
+  }
 
   if (isServerRuntime && isDevelopment) {
     const localContent = await loadContentLocally(endpoint)

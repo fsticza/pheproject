@@ -5,6 +5,7 @@ import { resolve } from 'node:path'
 function getContentRoutes() {
   const routes = new Set([
     '/',
+    '/adatvedelmi-tajekoztato',
     '/blog',
     '/kapcsolat',
     '/referenciak',
@@ -43,6 +44,9 @@ const nitroPreset =
 const contentRoutes = getContentRoutes()
 
 export default defineNuxtConfig({
+  experimental: {
+    payloadExtraction: false
+  },
   dir: {
     public: 'static'
   },

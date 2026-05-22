@@ -32,15 +32,6 @@ export default defineNuxtComponent({
       projectsData: await fetchApiJson('/api/content/referenciak', req)
     }
   },
-  data() {
-    return {
-      imgPath:
-        process.env.NODE_ENV === 'development'
-          ? ''
-          : '',
-      projectsData: []
-    }
-  },
   head() {
     return {
       title: 'PHE project development & consulting - Referenciák'

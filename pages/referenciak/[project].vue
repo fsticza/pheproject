@@ -92,15 +92,38 @@ export default defineNuxtComponent({
     HeadImg,
     ImageLightbox
   },
+  async asyncData({ params, route, req }) {
+    const routePath = route && route.path ? String(route.path) : ''
+    const routeSlug = routePath.split('/').filter(Boolean).pop() || ''
+    const slug = params && params.project ? String(params.project) : routeSlug
+
+    if (isInvalidSlug(slug)) {
+      return {
+        project: null
+      }
+    }
+
+    try {
+      const project = await fetchApiJson(`/api/content/referenciak/${slug}`, req)
+      return {
+        project
+      }
+    } catch (err) {
+      return {
+        project: null
+      }
+    }
+  },
   data() {
     return {
       imgPath: '',
-      galleryIndex: null,
-      project: null
+      galleryIndex: null
     }
   },
   mounted() {
-    this.loadProject()
+    if (!this.project) {
+      this.loadProject()
+    }
   },
   watch: {
     '$route.fullPath'() {
