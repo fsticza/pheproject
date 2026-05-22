@@ -7,6 +7,10 @@
   max-age=604800,
 	immutable'''
 
+[build]
+  command = "npm run generate"
+  publish = "build"
+
 [build.environment]
   NODE_VERSION = "24"
   NPM_VERSION = "11"

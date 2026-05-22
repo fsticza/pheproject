@@ -9,12 +9,12 @@
     "node": ">=24.0.0 <25.0.0"
   },
   "scripts": {
-    "dev": "nuxi-ng dev",
-    "build": "nuxi-ng build",
+    "dev": "nuxi dev",
+    "build": "nuxi build",
     "imagemin": "node ./imagemin.js",
     "prestart": "node ./scripts/ensure-production-output.mjs",
-    "start": "nuxi-ng preview",
-    "generate": "nuxi-ng generate",
+    "start": "nuxi preview",
+    "generate": "nuxi generate && rm -rf build && mkdir -p build && cp -R .output/public/. build/",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "test": "ava",
     "smoke:routes": "node ./scripts/smoke-routes.mjs",
@@ -22,10 +22,10 @@
     "preflight:cutover": "node ./scripts/cutover-preflight.mjs",
     "postdeploy:verify": "node ./scripts/postdeploy-verify.mjs",
     "dev:bridge": "nuxt2 dev",
-    "dev:nuxt": "nuxi-ng dev",
+    "dev:nuxt": "nuxi dev",
     "build:bridge": "nuxt2 build",
-    "build:nuxt": "nuxi-ng build",
-    "start:nuxt": "nuxi-ng preview",
+    "build:nuxt": "nuxi build",
+    "start:nuxt": "nuxi preview",
     "generate:bridge": "nuxt2 generate"
   },
   "dependencies": {

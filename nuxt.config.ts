@@ -10,6 +10,9 @@ const nitroPreset =
 const contentRoutes = getContentRoutes()
 
 export default defineNuxtConfig({
+  dir: {
+    public: 'static'
+  },
   /*
    ** Headers of the page
    */
