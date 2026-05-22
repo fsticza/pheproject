@@ -16,7 +16,7 @@
 export default {
   data() {
     return {
-      imgPath: 'https://d1loboc6rox52k.cloudfront.net'
+      imgPath: ''
     }
   }
 }

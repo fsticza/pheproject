@@ -10,7 +10,7 @@
 
     <div class="actual-content">
       <section>
-        <service-list :is-extended="true" />
+        <service-list :is-extended="true" :services-data="servicesData" />
       </section>
     </div>
   </div>
@@ -19,18 +19,26 @@
 <script>
 import HeadImg from '../../components/HeadImg'
 import ServiceList from '../../components/ServiceList'
+import { fetchApiJson } from '../../utils/apiFetch'
+import { defineNuxtComponent } from '#imports'
 
-export default {
+export default defineNuxtComponent({
   components: {
     HeadImg,
     ServiceList
+  },
+  async asyncData({ req }) {
+    return {
+      servicesData: await fetchApiJson('/api/content/service', req)
+    }
   },
   data() {
     return {
       imgPath:
         process.env.NODE_ENV === 'development'
-          ? 'https://d1loboc6rox52k.cloudfront.net'
-          : 'https://d1loboc6rox52k.cloudfront.net'
+          ? ''
+          : '',
+      servicesData: []
     }
   },
   head() {
@@ -38,7 +46,7 @@ export default {
       title: 'PHE project development & consulting - Szolgáltatások'
     }
   }
-}
+})
 </script>
 
 <style lang="scss"></style>

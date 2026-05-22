@@ -8,7 +8,7 @@
       </h1>
     </div>
 
-    <div class="actual-content">
+    <div v-if="project" class="actual-content">
       <div class="row">
         <div class="col-sm-6">
           <div class="img-canvas" style="height: 400px">
@@ -35,11 +35,13 @@
         </div>
       </div>
 
-      <LightGallery
+      <ImageLightbox
         :images="project.galleryImages"
+        :img-path="imgPath"
         :index="galleryIndex"
-        :disable-scroll="true"
+        :alt-prefix="`${project.title} | PHE gallery image`"
         @close="galleryIndex = null"
+        @change="galleryIndex = $event"
       />
 
       <div class="images-wrapper mt-4">
@@ -69,36 +71,84 @@
         </div>
       </div>
     </div>
+    <div v-else class="actual-content">
+      <p class="text-muted">Betoltes...</p>
+    </div>
   </article>
 </template>
 
 <script>
 import HeadImg from '../../components/HeadImg'
+import ImageLightbox from '../../components/ImageLightbox'
+import { fetchApiJson } from '../../utils/apiFetch'
+import { defineNuxtComponent } from '#imports'
 
-export default {
+const isInvalidSlug = (slug) => {
+  return !slug || slug === 'undefined' || /^\[.+\]$/.test(slug)
+}
+
+export default defineNuxtComponent({
   components: {
-    HeadImg
+    HeadImg,
+    ImageLightbox
   },
   data() {
     return {
-      imgPath:
-        process.env.NODE_ENV === 'development'
-          ? 'https://d1loboc6rox52k.cloudfront.net'
-          : 'https://d1loboc6rox52k.cloudfront.net',
-      galleryIndex: null
+      imgPath: '',
+      galleryIndex: null,
+      project: null
     }
   },
-  async asyncData({ params, payload }) {
-    if (payload) return { project: payload }
-    else
-      return {
-        project: await require(`~/assets/content/referenciak/${params.project}.json`)
+  mounted() {
+    this.loadProject()
+  },
+  watch: {
+    '$route.fullPath'() {
+      this.loadProject()
+    }
+  },
+  methods: {
+    extractSlugFromPath(pathname) {
+      if (!pathname) {
+        return ''
       }
+
+      const fromPath = pathname
+        .split('/')
+        .filter(Boolean)
+        .pop()
+
+      return fromPath ? String(fromPath) : ''
+    },
+    async loadProject() {
+      let pathname = ''
+
+      if (typeof window !== 'undefined' && window.location) {
+        pathname = window.location.pathname
+      } else if (this.$route && this.$route.path) {
+        pathname = this.$route.path
+      }
+
+      const slug = this.extractSlugFromPath(pathname)
+
+      if (isInvalidSlug(slug)) {
+        this.project = null
+        return
+      }
+
+      try {
+        this.project = await fetchApiJson(`/api/content/referenciak/${slug}`)
+      } catch (err) {
+        this.project = null
+      }
+    }
   },
   head() {
     return {
-      title: `${this.project.title} - PHE project development & consulting`
+      title: this.project
+        ? `${this.project.title} - PHE project development & consulting`
+        : 'PHE project development & consulting'
     }
   }
-}
+})
 </script>

@@ -36,7 +36,9 @@
 
 <script>
 import HeadImg from '../../components/HeadImg'
-export default {
+import { defineNuxtComponent } from '#imports'
+
+export default defineNuxtComponent({
   components: {
     HeadImg
   },
@@ -44,8 +46,8 @@ export default {
     return {
       imgPath:
         process.env.NODE_ENV === 'development'
-          ? 'https://d1loboc6rox52k.cloudfront.net'
-          : 'https://d1loboc6rox52k.cloudfront.net'
+          ? ''
+          : ''
     }
   },
   head() {
@@ -53,11 +55,11 @@ export default {
       title: 'PHE project development & consulting - Rólunk'
     }
   }
-}
+})
 </script>
 
 <style lang="scss">
-@import '~/assets/scss/variables';
+@use '~/assets/scss/variables' as *;
 .blockquote {
   padding: 1rem 0;
   margin: 1rem 0;

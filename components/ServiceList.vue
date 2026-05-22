@@ -51,13 +51,13 @@
                   <div class="mb-auto text-justify">
                     {{ service.description }}
                   </div>
-                  <NLink
+                  <NuxtLink
                     v-if="!isExtended"
                     :to="{ path: '/szolgaltatasok', hash: `#${service.tag}` }"
                     class="more-link mt-2 mb-md-2"
                   >
                     Bővebben
-                  </NLink>
+                  </NuxtLink>
                 </div>
               </div>
             </div>
@@ -74,34 +74,55 @@
 </template>
 
 <script>
+const DEFAULT_PROJECT_TAGS = [
+  { label: 'Minden típus', value: 'ALL' },
+  { label: 'Lebonyolítás', value: 'IMPL' },
+  { label: 'Projektmenedzsment', value: 'PM' },
+  { label: 'Műszaki ellenőrzés', value: 'TS' },
+  { label: 'Műszaki tanácsadás', value: 'TC' },
+  { label: 'Ingatlanfejelsztés', value: 'RED' }
+]
+
 export default {
   components: {},
   props: {
     isExtended: {
       type: Boolean,
       default: false
+    },
+    servicesData: {
+      type: Array,
+      default: () => []
+    },
+    projectTagsData: {
+      type: Array,
+      default: () => []
     }
   },
   data() {
     return {
       imgPath:
         process.env.NODE_ENV === 'development'
-          ? 'https://d1loboc6rox52k.cloudfront.net'
-          : 'https://d1loboc6rox52k.cloudfront.net',
+          ? ''
+          : '',
       serviceFilter: 'IMPL'
     }
   },
   computed: {
     services() {
-      const { state } = this.$store
-      const sortedTags = state.projectTags.map(({ value }) => value)
-      return [...state.services].sort((a, b) => {
+      const sourceServices = this.servicesData.length ? this.servicesData : []
+      const projectTags = this.projectTagsData.length
+        ? this.projectTagsData
+        : DEFAULT_PROJECT_TAGS
+      const sortedTags = projectTags.map(({ value }) => value)
+
+      return [...sourceServices].sort((a, b) => {
         return sortedTags.indexOf(a.tag) - sortedTags.indexOf(b.tag)
       })
     }
   },
   mounted() {
-    const { hash } = this.$store.$router.history.current
+    const { hash } = this.$route
     const tag = hash && hash.substr(1)
     if (tag) {
       this.serviceFilter = tag
@@ -116,7 +137,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~/assets/scss/variables';
+@use '~/assets/scss/variables' as *;
 .service-nav {
   position: relative;
   z-index: 10;
@@ -131,7 +152,7 @@ export default {
     }
 
     &.active {
-      *font-weight: bold;
+      font-weight: bold;
       color: $body-color;
 
       .service-link-icon {

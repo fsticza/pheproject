@@ -1,8 +1,11 @@
-import { mount } from '@vue/test-utils'
-import test from 'ava'
-import Logo from '@/components/Logo.vue'
+const fs = require('node:fs')
+const path = require('node:path')
+const test = require('ava').default
 
-test('is a Vue instance', (t) => {
-  const wrapper = mount(Logo)
-  t.is(wrapper.isVueInstance(), true)
+test('HeadImg component contains expected hero image reference', (t) => {
+  const filePath = path.join(__dirname, '../../components/HeadImg.vue')
+  const source = fs.readFileSync(filePath, 'utf8')
+
+  t.true(source.includes('index-head2.jpg'))
+  t.true(source.includes('PHE | M'))
 })

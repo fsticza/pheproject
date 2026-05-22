@@ -40,12 +40,12 @@
                 <p class="mb-auto">
                   {{ post.description }}
                 </p>
-                <NLink
+                <NuxtLink
                   :to="{ name: 'blog-blog', params: { blog: post.slug } }"
                   class="more-link mt-2 mb-md-2"
                 >
                   Bővebben
-                </NLink>
+                </NuxtLink>
               </div>
             </div>
           </div>
@@ -56,21 +56,38 @@
 </template>
 <script>
 import HeadImg from '../../components/HeadImg'
-export default {
+import { fetchApiJson } from '../../utils/apiFetch'
+import { defineNuxtComponent } from '#imports'
+
+export default defineNuxtComponent({
   components: {
     HeadImg
+  },
+  async asyncData({ req }) {
+    return {
+      blogPostsData: await fetchApiJson('/api/content/blog', req)
+    }
   },
   data() {
     return {
       imgPath:
         process.env.NODE_ENV === 'development'
-          ? 'https://d1loboc6rox52k.cloudfront.net'
-          : 'https://d1loboc6rox52k.cloudfront.net'
+          ? ''
+          : '',
+      blogPostsData: []
     }
   },
   computed: {
     blogPosts() {
-      return this.$store.state.blogPosts
+      if (this.blogPostsData.length) {
+        return this.blogPostsData
+      }
+
+      if (this.$store && this.$store.state) {
+        return this.$store.state.blogPosts || []
+      }
+
+      return []
     }
   },
   head() {
@@ -78,5 +95,5 @@ export default {
       title: 'PHE project development & consulting - Extrák'
     }
   }
-}
+})
 </script>

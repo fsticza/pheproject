@@ -10,7 +10,7 @@
 
     <div class="actual-content">
       <section class="mt-4">
-        <service-list />
+        <service-list :services-data="servicesData" />
       </section>
 
       <div class="separator"></div>
@@ -60,7 +60,7 @@
                     {{ post.description }}
                   </p>
                   <div>
-                    <NLink
+                    <NuxtLink
                       :to="{
                         name: 'blog-blog',
                         params: { blog: post.slug }
@@ -68,7 +68,7 @@
                       class="more-link"
                     >
                       Bővebben
-                    </NLink>
+                    </NuxtLink>
                   </div>
                 </div>
               </div>
@@ -80,7 +80,7 @@
       <div class="separator"></div>
 
       <section class="mt-4">
-        <reference-list></reference-list>
+        <reference-list :projects-data="projectsData"></reference-list>
       </section>
     </div>
   </div>
@@ -90,19 +90,37 @@
 import ServiceList from '../components/ServiceList'
 import ReferenceList from '../components/ReferenceList'
 import HeadImg from '../components/HeadImg'
+import { fetchApiJson } from '../utils/apiFetch'
+import { defineNuxtComponent } from '#imports'
 
-export default {
+export default defineNuxtComponent({
   components: {
     ServiceList,
     ReferenceList,
     HeadImg
   },
+  async asyncData({ req }) {
+    const [blogPostsData, projectsData, servicesData] = await Promise.all([
+      fetchApiJson('/api/content/blog', req),
+      fetchApiJson('/api/content/referenciak', req),
+      fetchApiJson('/api/content/service', req)
+    ])
+
+    return {
+      blogPostsData,
+      projectsData,
+      servicesData
+    }
+  },
   data() {
     return {
       imgPath:
         process.env.NODE_ENV === 'development'
-          ? 'https://d1loboc6rox52k.cloudfront.net'
-          : 'https://d1loboc6rox52k.cloudfront.net',
+          ? ''
+          : '',
+      blogPostsData: [],
+      projectsData: [],
+      servicesData: [],
       activeCarouselIndex: 0,
       carouselInterval: null
     }
@@ -116,7 +134,15 @@ export default {
   },
   computed: {
     blogPosts() {
-      return this.$store.state.blogPosts.filter((post) => {
+      let source = []
+
+      if (this.blogPostsData && this.blogPostsData.length) {
+        source = this.blogPostsData
+      } else if (this.$store && this.$store.state) {
+        source = this.$store.state.blogPosts || []
+      }
+
+      return source.filter((post) => {
         return post.isHighlighted
       })
     }
@@ -124,19 +150,13 @@ export default {
   mounted() {
     this.initCarousel()
   },
+  beforeUnmount() {
+    this.stopCarousel()
+  },
+  beforeDestroy() {
+    this.stopCarousel()
+  },
   methods: {
-    onCarouselMouseover() {
-      this.stopCarousel()
-    },
-    onCarouselMouseout() {
-      this.initCarousel()
-    },
-    onCarouselIndicatorClick(idx) {
-      this.setActiveCarouselIndex(idx)
-    },
-    setActiveCarouselIndex(idx) {
-      this.activeCarouselIndex = idx
-    },
     stopCarousel() {
       if (this.carouselInterval) {
         clearInterval(this.carouselInterval)
@@ -145,6 +165,11 @@ export default {
     initCarousel() {
       const max = this.blogPosts.length
       this.stopCarousel()
+
+      if (!max) {
+        return
+      }
+
       this.carouselInterval = setInterval(() => {
         const index =
           this.activeCarouselIndex + 1 === max
@@ -152,13 +177,22 @@ export default {
             : this.activeCarouselIndex + 1
         this.activeCarouselIndex = index
       }, 6000)
+    },
+    onCarouselMouseover() {
+      this.stopCarousel()
+    },
+    onCarouselMouseout() {
+      this.initCarousel()
+    },
+    onCarouselIndicatorClick(idx) {
+      this.activeCarouselIndex = idx
     }
   }
-}
+})
 </script>
 
 <style lang="scss">
-@import '~/assets/scss/variables';
+@use '~/assets/scss/variables' as *;
 
 .separator {
   margin: 50px 0;

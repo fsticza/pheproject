@@ -4,9 +4,14 @@
 
 ## Build Setup
 
+## Environment
+
+- Use Node 24 and npm 11 for local development.
+- No required runtime environment variables at this stage.
+
 ``` bash
 # install dependencies
-$ npm run install
+$ npm install
 
 # serve with hot reload at localhost:3000
 $ npm run dev

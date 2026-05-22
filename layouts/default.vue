@@ -2,8 +2,8 @@
   <div class="default-layout">
     <div class="main-padder">
       <header class="container">
-        <b-navbar class="main-navbar" toggleable="lg" type="light">
-          <b-navbar-brand href="/">
+        <nav class="main-navbar navbar navbar-light navbar-expand-lg">
+          <NuxtLink class="navbar-brand" to="/" @click="closeNav">
             <img
               height="100"
               class="brand-img brand-img--first"
@@ -16,60 +16,80 @@
               src="~assets/img/PHE-logo-2.png"
               alt=""
             />
-          </b-navbar-brand>
+          </NuxtLink>
 
-          <b-navbar-toggle
-            class="ml-auto"
-            target="nav-collapse"
-          ></b-navbar-toggle>
-
-          <b-collapse
-            id="nav-collapse"
-            class="main-nav-collapse ml-lg-auto"
-            is-nav
+          <button
+            class="navbar-toggler ml-auto"
+            type="button"
+            aria-controls="nav-collapse"
+            :aria-expanded="isNavOpen.toString()"
+            aria-label="Toggle navigation"
+            @click="isNavOpen = !isNavOpen"
           >
-            <b-navbar-nav class="main-nav-items">
-              <NLink
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div
+            id="nav-collapse"
+            class="main-nav-collapse ml-lg-auto collapse navbar-collapse"
+            :class="{ show: isNavOpen }"
+          >
+            <div class="main-nav-items navbar-nav">
+              <NuxtLink
                 class="nav-item nav-link"
                 active-class="active"
                 to="/szolgaltatasok"
-                >szolgáltatásaink</NLink
+                @click="closeNav"
+                >szolgáltatásaink</NuxtLink
               >
-              <NLink
+              <NuxtLink
                 class="nav-item nav-link"
                 active-class="active"
                 to="/rolunk"
-                >rólunk</NLink
+                @click="closeNav"
+                >rólunk</NuxtLink
               >
-              <NLink
+              <NuxtLink
                 class="nav-item nav-link"
                 active-class="active"
                 to="/referenciak"
-                >referenciák</NLink
+                @click="closeNav"
+                >referenciák</NuxtLink
               >
-              <NLink
+              <NuxtLink
                 class="nav-item nav-link"
                 active-class="active"
                 to="/kapcsolat"
-                >kontakt</NLink
+                @click="closeNav"
+                >kontakt</NuxtLink
               >
-              <NLink class="nav-item nav-link" active-class="active" to="/blog"
-                >extra</NLink
+              <NuxtLink
+                class="nav-item nav-link"
+                active-class="active"
+                to="/blog"
+                @click="closeNav"
+                >extra</NuxtLink
               >
-            </b-navbar-nav>
-            <!-- <b-navbar-nav class="">
+            </div>
+            <!-- <div class="navbar-nav">
                 HU | EN
-              </b-navbar-nav> -->
+              </div> -->
 
             <div class="separator-top"></div>
 
             <div class="text-center main-nav-contact mt-2 mt-md-0">
               <a class="main-nav-contact-link" href="mailto:info@pheproject.hu">
-                <EmailIcon class="contact-link-icon" />
+                <span
+                  class="contact-link-icon icon-mask icon-mask--email"
+                  aria-hidden="true"
+                ></span>
                 info@pheproject.hu
               </a>
               <a class="main-nav-contact-link" href="tel:+36705263135">
-                <PhoneIcon class="contact-link-icon" />
+                <span
+                  class="contact-link-icon icon-mask icon-mask--phone"
+                  aria-hidden="true"
+                ></span>
                 +3670 526 3135
               </a>
               <a
@@ -77,16 +97,19 @@
                 target="_blank"
                 href="https://goo.gl/maps/njg9EcpNG8JhFRjx6"
               >
-                <MapIcon class="contact-link-icon" />
+                <span
+                  class="contact-link-icon icon-mask icon-mask--map"
+                  aria-hidden="true"
+                ></span>
                 1096 Budapest, Tűzoltó utca 50.
               </a>
             </div>
-          </b-collapse>
-        </b-navbar>
+          </div>
+        </nav>
       </header>
       <div class="main-content">
         <div class="container">
-          <nuxt />
+          <slot />
         </div>
       </div>
     </div>
@@ -128,23 +151,36 @@
             target="_blank"
             href="https://goo.gl/maps/njg9EcpNG8JhFRjx6"
           >
-            <MapIcon class="footer-link-icon" />
+            <span
+              class="footer-link-icon icon-mask icon-mask--map"
+              aria-hidden="true"
+            ></span>
             1096 Budapest, Tűzoltó utca 50. Manta Office
           </a>
           <a class="footer-link col-sm-3 my-1" href="mailto:info@pheproject.hu">
-            <EmailIcon class="footer-link-icon" />
+            <span
+              class="footer-link-icon icon-mask icon-mask--email"
+              aria-hidden="true"
+            ></span>
             info@pheproject.hu
           </a>
           <a class="footer-link col-sm-2 my-1" href="tel:+36705263135">
-            <PhoneIcon class="footer-link-icon" />
+            <span
+              class="footer-link-icon icon-mask icon-mask--phone"
+              aria-hidden="true"
+            ></span>
             +3670 526 3135
           </a>
           <a
             class="ml-auto text-center text-sm-right col-sm-3 my-1"
             href="https://www.facebook.com/pheproject.hu/"
             target="_blank"
+            aria-label="Facebook"
           >
-            <img class="footer-link-icon" src="~assets/img/facebook-icon.svg" />
+            <span
+              class="footer-link-icon icon-mask icon-mask--facebook"
+              aria-hidden="true"
+            ></span>
           </a>
         </div>
       </div>
@@ -153,244 +189,20 @@
 </template>
 
 <script>
-import MapIcon from '~/assets/img/map-icon.svg?inline'
-import EmailIcon from '~/assets/img/email-icon.svg?inline'
-import PhoneIcon from '~/assets/img/phone-icon.svg?inline'
-
-const customStyle = [
-  {
-    elementType: 'geometry',
-    stylers: [
-      {
-        color: '#212121'
-      }
-    ]
-  },
-  {
-    elementType: 'labels.icon',
-    stylers: [
-      {
-        visibility: 'off'
-      }
-    ]
-  },
-  {
-    elementType: 'labels.text.fill',
-    stylers: [
-      {
-        color: '#757575'
-      }
-    ]
-  },
-  {
-    elementType: 'labels.text.stroke',
-    stylers: [
-      {
-        color: '#212121'
-      }
-    ]
-  },
-  {
-    featureType: 'administrative',
-    elementType: 'geometry',
-    stylers: [
-      {
-        color: '#757575'
-      }
-    ]
-  },
-  {
-    featureType: 'administrative.country',
-    elementType: 'labels.text.fill',
-    stylers: [
-      {
-        color: '#9e9e9e'
-      }
-    ]
-  },
-  {
-    featureType: 'administrative.land_parcel',
-    stylers: [
-      {
-        visibility: 'off'
-      }
-    ]
-  },
-  {
-    featureType: 'administrative.locality',
-    elementType: 'labels.text.fill',
-    stylers: [
-      {
-        color: '#bdbdbd'
-      }
-    ]
-  },
-  {
-    featureType: 'poi',
-    elementType: 'labels.text.fill',
-    stylers: [
-      {
-        color: '#757575'
-      }
-    ]
-  },
-  {
-    featureType: 'poi.park',
-    elementType: 'geometry',
-    stylers: [
-      {
-        color: '#181818'
-      }
-    ]
-  },
-  {
-    featureType: 'poi.park',
-    elementType: 'labels.text.fill',
-    stylers: [
-      {
-        color: '#616161'
-      }
-    ]
-  },
-  {
-    featureType: 'poi.park',
-    elementType: 'labels.text.stroke',
-    stylers: [
-      {
-        color: '#1b1b1b'
-      }
-    ]
-  },
-  {
-    featureType: 'road',
-    elementType: 'geometry.fill',
-    stylers: [
-      {
-        color: '#2c2c2c'
-      }
-    ]
-  },
-  {
-    featureType: 'road',
-    elementType: 'labels.text.fill',
-    stylers: [
-      {
-        color: '#8a8a8a'
-      }
-    ]
-  },
-  {
-    featureType: 'road.arterial',
-    elementType: 'geometry',
-    stylers: [
-      {
-        color: '#373737'
-      }
-    ]
-  },
-  {
-    featureType: 'road.highway',
-    elementType: 'geometry',
-    stylers: [
-      {
-        color: '#3c3c3c'
-      }
-    ]
-  },
-  {
-    featureType: 'road.highway.controlled_access',
-    elementType: 'geometry',
-    stylers: [
-      {
-        color: '#4e4e4e'
-      }
-    ]
-  },
-  {
-    featureType: 'road.local',
-    elementType: 'labels.text.fill',
-    stylers: [
-      {
-        color: '#616161'
-      }
-    ]
-  },
-  {
-    featureType: 'transit',
-    elementType: 'labels.text.fill',
-    stylers: [
-      {
-        color: '#757575'
-      }
-    ]
-  },
-  {
-    featureType: 'water',
-    elementType: 'geometry',
-    stylers: [
-      {
-        color: '#000000'
-      }
-    ]
-  },
-  {
-    featureType: 'water',
-    elementType: 'labels.text.fill',
-    stylers: [
-      {
-        color: '#3d3d3d'
-      }
-    ]
-  }
-]
-const options = {
-  zoomControl: false,
-  mapTypeControl: false,
-  scaleControl: false,
-  streetViewControl: false,
-  rotateControl: false,
-  fullscreenControl: false,
-  styles: customStyle
-}
-
 export default {
-  components: {
-    MapIcon,
-    EmailIcon,
-    PhoneIcon
-  },
   data() {
     return {
-      options
+      isNavOpen: false
     }
   },
-  computed: {
-    customStyleUrlParam() {
-      return customStyle.reduce((accu, style) => {
-        accu += '&style='
-        if (style.featureType) {
-          accu += `feature:${style.featureType}`
-          if (style.elementType) {
-            accu += '|'
-          }
-        }
-        if (style.elementType) {
-          accu += `element:${style.elementType}|`
-        }
-        style.stylers.forEach((styler) => {
-          accu += Object.entries(styler)
-            .map(([key, value]) => {
-              return `${key}:${value.replace('#', '0x')}`
-            })
-            .join('|')
-        })
-        return accu
-      }, '')
+  watch: {
+    $route() {
+      this.closeNav()
     }
   },
-  asyncData(context) {
-    return {
-      options
+  methods: {
+    closeNav() {
+      this.isNavOpen = false
     }
   }
 }
@@ -488,6 +300,40 @@ body {
   }
 }
 .footer-link-icon {
-  padding-right: 5px;
+  margin-right: 5px;
+}
+
+.icon-mask {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  background-color: currentColor;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+}
+
+.icon-mask--email {
+  mask-image: url('/img/email-icon.svg');
+  -webkit-mask-image: url('/img/email-icon.svg');
+}
+
+.icon-mask--phone {
+  mask-image: url('/img/phone-icon.svg');
+  -webkit-mask-image: url('/img/phone-icon.svg');
+}
+
+.icon-mask--map {
+  mask-image: url('/img/map-icon.svg');
+  -webkit-mask-image: url('/img/map-icon.svg');
+}
+
+.icon-mask--facebook {
+  mask-image: url('/img/facebook-icon.svg');
+  -webkit-mask-image: url('/img/facebook-icon.svg');
 }
 </style>

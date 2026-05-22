@@ -7,7 +7,7 @@
         mindenki számára
       </h1>
     </div>
-    <article class="actual-content">
+    <article v-if="blogPost" class="actual-content">
       <div class="row">
         <div class="col-sm-6">
           <div class="img-canvas" style="height: 400px">
@@ -31,11 +31,13 @@
         </div>
       </div>
 
-      <LightGallery
+      <ImageLightbox
         :images="blogPost.galleryImages"
+        :img-path="imgPath"
         :index="galleryIndex"
-        :disable-scroll="true"
+        :alt-prefix="`${blogPost.title} | PHE gallery image`"
         @close="galleryIndex = null"
+        @change="galleryIndex = $event"
       />
 
       <div class="images-wrapper mt-4">
@@ -67,34 +69,83 @@
         </div>
       </div>
     </article>
+    <article v-else class="actual-content">
+      <p class="text-muted">Betoltes...</p>
+    </article>
   </div>
 </template>
 <script>
 import HeadImg from '../../components/HeadImg'
-export default {
+import ImageLightbox from '../../components/ImageLightbox'
+import { fetchApiJson } from '../../utils/apiFetch'
+import { defineNuxtComponent } from '#imports'
+
+const isInvalidSlug = (slug) => {
+  return !slug || slug === 'undefined' || /^\[.+\]$/.test(slug)
+}
+
+export default defineNuxtComponent({
   components: {
-    HeadImg
+    HeadImg,
+    ImageLightbox
   },
   data() {
     return {
-      imgPath:
-        process.env.NODE_ENV === 'development'
-          ? 'https://d1loboc6rox52k.cloudfront.net'
-          : 'https://d1loboc6rox52k.cloudfront.net',
-      galleryIndex: null
+      imgPath: '',
+      galleryIndex: null,
+      blogPost: null
     }
   },
-  async asyncData({ params, payload }) {
-    if (payload) return { blogPost: payload }
-    else
-      return {
-        blogPost: await require(`~/assets/content/blog/${params.blog}.json`)
+  mounted() {
+    this.loadBlogPost()
+  },
+  watch: {
+    '$route.fullPath'() {
+      this.loadBlogPost()
+    }
+  },
+  methods: {
+    extractSlugFromPath(pathname) {
+      if (!pathname) {
+        return ''
       }
+
+      const fromPath = pathname
+        .split('/')
+        .filter(Boolean)
+        .pop()
+
+      return fromPath ? String(fromPath) : ''
+    },
+    async loadBlogPost() {
+      let pathname = ''
+
+      if (typeof window !== 'undefined' && window.location) {
+        pathname = window.location.pathname
+      } else if (this.$route && this.$route.path) {
+        pathname = this.$route.path
+      }
+
+      const slug = this.extractSlugFromPath(pathname)
+
+      if (isInvalidSlug(slug)) {
+        this.blogPost = null
+        return
+      }
+
+      try {
+        this.blogPost = await fetchApiJson(`/api/content/blog/${slug}`)
+      } catch (err) {
+        this.blogPost = null
+      }
+    }
   },
   head() {
     return {
-      title: `${this.blogPost.title} - PHE project development & consulting`
+      title: this.blogPost
+        ? `${this.blogPost.title} - PHE project development & consulting`
+        : 'PHE project development & consulting'
     }
   }
-}
+})
 </script>

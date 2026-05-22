@@ -26,15 +26,27 @@
               target="_blank"
               href="https://goo.gl/maps/njg9EcpNG8JhFRjx6"
             >
-              <MapIcon class="contact-link-icon" />
+              <img
+                class="contact-link-icon"
+                src="~assets/img/map-icon.svg"
+                alt=""
+              />
               1096 Budapest, Tűzoltó utca 50. Manta Office
             </a>
             <a class="contact-link" href="mailto:info@pheproject.hu">
-              <EmailIcon class="contact-link-icon" />
+              <img
+                class="contact-link-icon"
+                src="~assets/img/email-icon.svg"
+                alt=""
+              />
               info@pheproject.hu
             </a>
             <a class="contact-link" href="tel:+36705263135">
-              <PhoneIcon class="contact-link-icon" />
+              <img
+                class="contact-link-icon"
+                src="~assets/img/phone-icon.svg"
+                alt=""
+              />
               +3670 526 3135
             </a>
           </div>
@@ -48,7 +60,8 @@
             data-netlify="true"
             data-netlify-honeypot="bot-field"
           >
-            <div></div>
+            <input type="hidden" name="form-name" value="contact" />
+            <input type="hidden" name="bot-field" />
             <div id="success" v-show="isSuccess" class="alert alert-success">
               Az üzenetet sikeresen megkaptuk, köszönjük!
             </div>
@@ -82,7 +95,7 @@
                 required
                 class="form-control"
                 name="message"
-              />
+              ></textarea>
             </div>
             <div>
               <button class="btn btn-primary" type="submit">Elküldöm</button>
@@ -96,23 +109,18 @@
 
 <script>
 import HeadImg from '../../components/HeadImg'
-import MapIcon from '~/assets/img/map-icon.svg?inline'
-import EmailIcon from '~/assets/img/email-icon.svg?inline'
-import PhoneIcon from '~/assets/img/phone-icon.svg?inline'
+import { defineNuxtComponent } from '#imports'
 
-export default {
+export default defineNuxtComponent({
   components: {
-    HeadImg,
-    MapIcon,
-    EmailIcon,
-    PhoneIcon
+    HeadImg
   },
   data() {
     return {
       imgPath:
         process.env.NODE_ENV === 'development'
-          ? 'https://d1loboc6rox52k.cloudfront.net'
-          : 'https://d1loboc6rox52k.cloudfront.net',
+          ? ''
+          : '',
       isSuccess: false,
       name: '',
       email: '',
@@ -137,11 +145,11 @@ export default {
       }).then(() => (this.isSuccess = true))
     }
   }
-}
+})
 </script>
 
 <style lang="scss">
-@import '~/assets/scss/variables';
+@use '~/assets/scss/variables' as *;
 .contact-links {
   @include media-breakpoint-up(xl) {
     display: flex;

@@ -5,38 +5,46 @@
   "author": "Ferenc Sticza",
   "private": true,
   "engines": {
-    "npm": ">=9.5.1 <10.0.0",
-    "node": ">=18.16.0 <19.0.0"
+    "npm": ">=11.0.0 <12.0.0",
+    "node": ">=24.0.0 <25.0.0"
   },
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
-    "build": "nuxt build",
+    "dev": "nuxi-ng dev",
+    "build": "nuxi-ng build",
     "imagemin": "node ./imagemin.js",
-    "start": "cross-env NODE_ENV=production node server/index.js",
-    "generate": "nuxt generate",
+    "prestart": "node ./scripts/ensure-production-output.mjs",
+    "start": "nuxi-ng preview",
+    "generate": "nuxi-ng generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "test": "ava"
+    "test": "ava",
+    "smoke:routes": "node ./scripts/smoke-routes.mjs",
+    "monitor:runtime": "node ./scripts/monitor-runtime.mjs",
+    "preflight:cutover": "node ./scripts/cutover-preflight.mjs",
+    "postdeploy:verify": "node ./scripts/postdeploy-verify.mjs",
+    "dev:bridge": "nuxt2 dev",
+    "dev:nuxt": "nuxi-ng dev",
+    "build:bridge": "nuxt2 build",
+    "build:nuxt": "nuxi-ng build",
+    "start:nuxt": "nuxi-ng preview",
+    "generate:bridge": "nuxt2 generate"
   },
   "dependencies": {
-    "@nuxtjs/axios": "^5.9.4",
     "@nuxtjs/markdownit": "^1.2.7",
-    "@nuxtjs/pwa": "^3.0.0-0",
-    "@nuxtjs/svg": "^0.1.6",
     "bootstrap": "^4.4.1",
-    "bootstrap-vue": "^2.3.0",
+    "core-js": "^3.49.0",
     "cross-env": "^5.2.0",
+    "defu": "^6.1.4",
+    "hookable": "5.5.3",
     "koa": "^2.11.0",
-    "nuxt": "^2.11.0",
-    "sass": "^1.62.1",
-    "vue": "^2.6.11",
-    "vue-light-gallery": "^1.0.1",
-    "vue2-google-maps": "^0.10.7"
+    "markdown-it": "^14.1.1",
+    "nuxt": "^4.4.6",
+    "sass": "^1.62.1"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^1.0.1",
     "@nuxtjs/eslint-module": "^1.0.0",
-    "@vue/test-utils": "^1.0.0-beta.31",
-    "ava": "^2.2.0",
+    "@vue/test-utils": "^2.4.10",
+    "ava": "^8.0.1",
     "babel-eslint": "^10.0.1",
     "babel-plugin-module-resolver": "^3.2.0",
     "browser-env": "^3.3.0",
@@ -49,10 +57,22 @@
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-pngquant": "^6.0.0",
     "nodemon": "^1.19.4",
+    "nuxi": "^3.35.2",
     "prettier": "^1.19.1",
     "require-extension-hooks": "^0.3.3",
     "require-extension-hooks-babel": "^1.0.0",
     "require-extension-hooks-vue": "^2.0.0",
-    "sass-loader": "^8.0.2"
+    "sass-loader": "^10.4.1",
+    "vue": "^3.5.34"
+  },
+  "ava": {
+    "sources": [
+      "**/*.{js,vue}"
+    ],
+    "files": [
+      "test/specs/**/*"
+    ],
+    "tap": true,
+    "verbose": true
   }
 }
